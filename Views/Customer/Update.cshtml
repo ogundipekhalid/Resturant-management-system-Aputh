@@ -1,0 +1,196 @@
+@model RDMS.Models.Dtos.CustomerDto
+@* @using RDMS.Models.Dtos
+@model UpdateCustomerRequestModel *@
+
+ <h2>Customer Update Form</h2>
+ 
+@* 
+<div>
+    <form asp-action="Update">
+        <div>
+            <div>
+                <div class="md -3"></div>
+                <input asp-for="Id" name="Id" value="@Model.Id" hidden />
+            </div>
+            <div>
+                <div class="md -3"></div>
+                <input asp-for="UserId" name="UserId" value="@Model.UserId" hidden />
+            </div>
+            <div>
+                <label for=""> FirstName </label>
+                <input asp-for="FirstName" name="FirstName"  value="@Model.FirstName" required/>
+                <span asp-validation-for="FirstName"></span>
+                <br><br>
+            </div>
+            <div>
+                <label for=""> LASTNAME </label>
+                <input asp-for="LastName" name="LastName"  value="@Model.LastName"required />
+                <span asp-validation-for="LastName"></span>
+                <br><br>
+            </div>
+            <div>
+                <label for=""> EMAIL </label>
+                <input asp-for="Email" name="Email" type="email"  value="@Model.Email"required />
+                <span asp-validation-for="Email"></span>
+                <br><br>
+            </div>
+
+            <div>
+                <label for=""> PHONENUMBER </label>
+                <input asp-for="PhoneNumber" name="PhoneNumber" type="PhoneNumber"  value="@Model.PhoneNumber" required/>
+                <span asp-validation-for="PhoneNumber"></span>
+                <br><br>
+            </div>
+        </div>
+        <div>
+            <input class="btn btn-primary" type="submit" value="Submit" />
+           
+    </form>
+</div> *@
+
+
+<style>
+    #objDiv,
+    #updateOjbectForm {
+        padding: 10px;
+    }
+
+    #object {
+        border: solid 1px #ccc;
+        padding: 10px;
+    }
+
+    p {
+        margin: 5px 0;
+    }
+
+    label {
+        display: inline-block;
+        width: 60px;
+        padding-right: 5px;
+        text-align: right
+    }
+
+    #updateOjbectForm label {
+        display: inline-block;
+        width: 80px;
+        text-align: right;
+        margin-right: 10px;
+    }
+</style> 
+
+
+
+    @* <section style="background-color: #eee;"> *@
+<form asp-action="Update">
+    <section >
+  <div class="container py-5">
+    <div class="row">
+      <div class="col">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3">
+            <p class="text-muted mb-1">NAME</p>
+            <input aria-label="NAME"  value="@Model.FirstName" readonly  > 
+            <p class="text-muted mb-4"></p>
+            <div class="d-flex justify-content-center mb-2">
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4 mb-lg-0">
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0"></p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                 <input asp-for="Id" name="Id" value="@Model.Id" hidden />
+            </p>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0"></p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                <input asp-for="UserId" name="UserId" value="@Model.UserId" hidden />
+            </p>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">FirstName</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                <input asp-for="FirstName" name="FirstName"  value="@Model.FirstName" required/>
+                <span asp-validation-for="FirstName"></span>
+            </p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">LastName</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                    <input asp-for="LastName" name="LastName"  value="@Model.LastName"required />
+                    <span asp-validation-for="LastName"></span>
+                </p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                    <input asp-for="Email" name="Email" type="email"  value="@Model.Email"required />
+                <span asp-validation-for="Email"></span>
+                    </p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Mobile</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                <input asp-for="PhoneNumber" name="PhoneNumber" type="PhoneNumber"  value="@Model.PhoneNumber" required/>
+                <span asp-validation-for="PhoneNumber"></span></p>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+          </div>
+          <div class="col-md-6">
+            <div >
+            <div>
+            <input class="btn btn-primary" type="submit" value="Submit" />
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  </form>
+
+
+
+

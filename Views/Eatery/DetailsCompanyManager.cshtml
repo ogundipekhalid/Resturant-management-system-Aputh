@@ -1,0 +1,57 @@
+@model RDMS.Models.Dtos.EateryAdminDto
+@{
+    ViewData["Title"] = "Branch Manager Details";
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-2 border" style="min-height: 520px; padding: 0px; margin: 0px">
+        </div>
+        <div class="row col-md-10 pt-3">
+            <div class="col-md-12">
+                <span class="text-center"><h3>@ViewData["Title"]</h3></span>
+                    <div style="">
+                        <input type="hidden" id="messageInput" value='@TempData["Message"]'>
+                        
+                            @* @await Html.PartialAsync("~/Views/Branch/List.cshtml") *@
+                            <div class="">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th>Id d</th>
+                                            <th>@Model.User.Id</th>
+                                        </tr>
+                                        <tr>
+                                            <th>FirstName</th>
+                                            <th>@Model.User.FirstName</th>
+                                        </tr>
+                                        <tr>
+                                            <th>LastName</th>
+                                            <th>@Model.User.LastName</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Email</th>
+                                            <th>@Model.User.Email</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Phone Number</th>
+                                            <th> @Model.User.PhoneNumber</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Branch</th>
+                                            <th>@Model.Branch.Name</th>
+                                        </tr>
+                                        @* <tr>
+                                            <th>Branch Address</th>
+                                            <th>@Model.Branch.AddressName.State</th>
+                                        </tr> *@
+                                    </tbody>
+                                </table>
+                            </div>
+                        
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

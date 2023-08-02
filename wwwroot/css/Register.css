@@ -1,0 +1,97 @@
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .form_container {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .form_control {
+    margin-bottom: 10px;
+  }
+  
+  .btn_box {
+    text-align: center;
+  }
+  
+
+
+
+  body {
+    background-color: #f2f2f2;
+}
+
+.book_section {
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+}
+
+.heading_container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.heading_container h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #3a3a3a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.form_container input[type="text"],
+.form_container input[type="email"],
+.form_container input[type="number"],
+.form_container input[type="password"],
+.form_container input[type="file"] {
+    background-color: #f9f9f9;
+    border: none;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    font-size: 16px;
+    color: #3a3a3a;
+}
+
+.form_container input[type="text"]:focus,
+.form_container input[type="email"]:focus,
+.form_container input[type="number"]:focus,
+.form_container input[type="password"]:focus,
+.form_container input[type="file"]:focus {
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+.btn_box {
+    margin-top: 30px;
+}
+
+.btn_box button[type="submit"] {
+    background-color: #d9230f;
+    border: none;
+    padding: 15px 40px;
+    font-size: 18px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.btn_box button[type="submit"]:hover {
+    background-color: #3a3a3a;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}

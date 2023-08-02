@@ -1,0 +1,57 @@
+@model RDMS.Models.Dtos.FoodDto
+@{
+    ViewData["Title"] = "Branch Details";
+}
+<div class="">
+    <div class="row">
+        <div>
+            <h6 class="pt-2" style="">
+            </h6>
+            <h6 class="pt-2">
+            </h6>
+        </div>
+        <link rel="stylesheet" href="~/css/foods.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <div class="row col-md-10 pt-3">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <table class="table">
+                    <tr>
+                        <td style="width: 50%;"></td>
+                        <td class="text-center" style="width: 50%;">
+                             <img src="~/Upload/Images/@Model.Image" height="100" width="100"> 
+                             @* <img  asp-append-version="true" src="~/Upload/Images/@food.Image"  alt="food.Data image"> *@
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Id</td>
+                        <td>
+                            @Model.Id
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>
+                            @Model.Name
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td>
+                            @Model.Price
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td>
+                            @Model.OrderStatus
+                        </td>
+                    </tr>
+                <tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

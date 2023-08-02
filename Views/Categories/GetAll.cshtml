@@ -1,0 +1,42 @@
+@model IEnumerable<RDMS.Models.Dtos.CategoryDto>
+
+@{
+    ViewData["Title"] = "Categories List";
+}
+
+<div class="">
+    <div class="row">
+        <div class="col-md-2 border" style="min-height: 520px; padding: 0px; margin: 0px">
+        </div>
+        <div class="row col-md-10 pt-3">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <span class="text-center"><h3>@ViewData["Title"]</h3></span>
+                <table class="table table-bordered table-striped table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>CategoriesName</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var Categories in Model)
+                        {
+                            <tr>
+                                <td>@Categories.Id</td>
+                                <td>@Categories.Name</td>
+                                <td id="Remove" name="@Categories.Id @Categories.Name"
+                                ><a asp-action="Delete" asp-controller="Categories" asp-route-id="@Categories.Id">Remove</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                    <div>
+
+                    </div>
+                </table>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+
+
+@* @using AirlineMS.Models.Dtos
+@model IEnumerable<BranchDto> *@
+@using RDMS.Models.Dtos
+@model IEnumerable<BranchDto>
+@{
+    ViewData["Title"] = "GetAllBranch";
+}
+<div>
+    <div class="text-center">
+        <h3>@ViewData["Title"]</h3>
+    </div>
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Phone Number</th>
+                        <th>Address</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                        <th>AddStaff</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var branch in Model)
+                    {
+                        <tr>
+                            <td>@branch.Id</td>
+                            <td>@branch.Name</td>
+                            <td>@branch.AddressName</td>
+                            <td>
+                                <a asp-controller="Staff" asp-action="Create" asp-route-id="@branch.Id" >Create Staff</a>
+                            </td>
+                            <td>
+                                <a asp-controller="Branch" asp-action="Update" asp-route-id="@branch.Id"> Update Branch</a>
+                            </td>
+                            <td>
+                                <a asp-controller="Branch" asp-action="Delete" asp-route-id="@branch.Id">Remove</a>
+                            </td>
+                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+@model IEnumerable<RDMS.Models.Dtos.EateryDto>
+
+<style>
+    body {
+        background-color: #f5f8fa; /* Milky white color */
+        margin: 20px;
+    }
+
+    h3 {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        color: #8b5c8d; /* Purple color */
+    }
+
+    table {
+        background-color: #ffffff; /* White color */
+    }
+
+    th {
+        background-color: #f5f5f5; /* Light gray color */
+    }
+
+    a {
+        color: #007bff; /* Blue color */
+    }
+
+    a:hover {
+        color: #0056b3; /* Darker blue color */
+    }
+</style>
+
+
+@{
+    ViewData["Title"] = "List of Eatery";
+}
+
+<div class="container">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center">@ViewData["Title"]</h3>
+            <table class="table table-bordered table-striped table-responsive">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>CAC Registration Num</th>
+                        <th>Certificate</th>
+                        <th>Logo</th>
+                        <th>Update</th>
+                        <th> View </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int SerialNumber = 1;
+                        foreach (var eatery in Model)
+                        {
+                            <tr>
+                                <td>@SerialNumber</td>
+                                <td>@eatery.Name</td>
+                                <td>@eatery.CertificationNumber</td>
+                                <td>
+                                    <a target="_blank" href="~/Upload/images/@eatery.Certificate" class="btn" >View</a>
+                                </td>
+                                <td>
+                                    <a href="~/Upload/images/@eatery.Logo" target="_blank" class="btn">View</a>
+                                </td>
+                                
+                                <td>
+                                    <a class="btn btn-info" asp-action="Update" asp-controller="Eatery" asp-route-id="@eatery.Id">Update</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-secondary" asp-controller="Eatery" asp-action="Details" asp-route-id="@eatery.Id">View Profile</a>
+                                </td>  
+                            </tr>
+                            SerialNumber++;
+                        }
+                    }   
+                </tbody>

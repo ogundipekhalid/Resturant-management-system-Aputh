@@ -1,0 +1,18 @@
+
+@model RDMS.Models.Dtos.CustomerDto
+  
+ <div>
+    <p>Are sure you want to delete </p>
+    <ul>
+        <li>
+        <form asp-action="Delete">
+        <input class="btn btn-danger" type="submit" asp-for ="Id" name="Id" value="@Model.Id" value="yes"   />
+        </form>
+        </li>
+         <li>
+            <a asp-controller="Customer" asp-action="GetAll"> No</a>
+        </li>
+    </ul>
+</div> 
+
+

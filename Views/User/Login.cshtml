@@ -1,0 +1,50 @@
+@model RDMS.Models.Dtos.UserDto
+
+@{
+    @* Layout = "~/Views/Shared/_Layout.cshtml"; *@
+    Layout = null;
+}
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login Form </title>
+
+  <link rel="stylesheet" href="~/css/Logie.css">
+  </head>
+  <body>
+    <link rel="stylesheet" href="~/css/Logi.css">
+
+    <div class="wrapper">
+      <div class="title">Login Form</div>
+      @* <form action="#"> *@
+        <form asp-action="Login" method="post" enctype="multipart/form-data">
+        <div class="field">
+        <input type="email" name="Email" id="Email" class="form-control" placeholder="Email" required/>
+          <label>Email Address</label>
+        </div>
+        <div class="field">
+            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required/>
+          <label>Password</label>
+        </div>
+        <div class="content">
+          <div class="checkbox">
+            <input type="checkbox" id="remember-me">
+            <label for="remember-me">Remember me</label>
+          </div>
+        </div>
+        <div class="field">
+          <input type="submit" value="Login">
+    </div>
+        <div class="signup-link">Not a member? <a asp-controller="Customer" asp-action="Register">Create an account</a></div>
+      </form>
+    </div>
+
+  </body>
+</html>
+
+

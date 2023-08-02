@@ -1,0 +1,83 @@
+
+.row{
+ width: 400px;
+    margin-left: 30%;
+    border-radius: 10px;
+    padding: 40px;
+    background: linear-gradient(#141e30, #243b55);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+}
+label{
+    top: -20px;
+    left: 0;
+    color: #03e9f4;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+.row .col-md-12 input{
+    background: linear-gradient(#141e30, #243b55);
+    color: #03e9f4;
+    border: 1px dotted white;
+}
+.row .col-md-12 h2{
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+select{
+    background: linear-gradient(#141e30, #243b55);
+    color: #03e9f4;
+}
+option{
+    color: #03e9f4;
+}
+
+
+button{
+    position: relative;
+    display: inline-block;
+    padding: 10px 10px;
+    color: #03e9f4;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 20px;
+    letter-spacing: 4px
+}
+.login-option{
+    display: flex;
+    align-items: baseline;
+}
+
+.login-option a{
+    padding-left: 60px;
+    color: #03e9f4;
+    text-decoration: underline;
+}
+.option{
+    display: flex;
+    align-items: baseline;
+    gap: 40px;
+}
+.option .register{
+    padding: 2px;
+    /* color: #03e9f4; */
+    /* text-decoration: underline; */
+    color: #fff;
+    border: 4px inset #243b55;
+    text-align: center;
+    text-decoration: none;
+}
+
+.option .register:hover{
+    color: #03e9f4;
+}
+.container .login-page{
+    /* border: 1px solid red; */
+    margin-top: 80px;
+}

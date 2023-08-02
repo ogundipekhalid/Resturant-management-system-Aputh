@@ -1,0 +1,42 @@
+
+
+@using RDMS.Models.Entity
+@using RDMS.Models.Enums
+@model List<OrderFood>
+
+    @* <link rel="stylesheet" href="~/css/foods.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    @if (@Model == null || @Model.Count() == 0)
+    {
+        <h1>No Orders yet</h1>
+    }
+<div class="images">
+    @foreach (var food in @Model)
+    {
+        <div class="">
+             @if (food.Food.OrderStatus != OrderStatus.NotAvailable)
+            { 
+                <img src="~/Upload/Images/@food.Food.Image" alt="food image">
+                <h6>Name: @food.Food.Name</h6>
+                <p>PRICE: $ @food.Food.Price</p>
+                <p>STATUS: @food.Food.OrderStatus</p>
+                if (food.Order.OrderStatus ==  OrderStatus.Available)
+                @* if (food.Order.OrderStatus ==  OrderStatus.NotAvailable) *@
+                {
+                    <div  class="btn-group">
+                     <a class="btn-warning btn" asp-action="Review" asp-controller="Customer"asp-route-id=@food.Order.Id>Customer</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="btn-group">
+                        <a class="btn-warning btn" asp-action="OrderProfile" asp-controller="Order"
+                asp-route-id=@food.Order.Id>Customer</a>
+                        <a class="btn-danger btn" asp-action="DeliveryStatus" asp-controller="Order"
+                asp-route-Id=@food.Order.Id>Mark as Delivered</a>
+                    </div>
+                }
+             } 
+        </div>
+    }
+</div> 

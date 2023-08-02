@@ -1,0 +1,92 @@
+
+
+@model RDMS.Models.Dtos.FoodDto 
+
+@{
+    @* Layout = "~/Views/Shared/_LayOut.cshtml"; *@
+}
+ 
+<style>
+    /* Style for the container div */
+    .form-container {
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Style for form labels */
+    .form-group label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    /* Style for form input fields and select element */
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    /* Style for form submit button */
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+</style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<h2>Food Update Form</h2>
+<div>
+    <form asp-action="Update" method="post" asp-controller="Food" enctype="multipart/form-data">
+        <div>
+            <div class="md-3"></div>
+            <input asp-for="Id" name="Id" value="@Model.Id" hidden />
+        </div>
+        <div>
+            <div class="form-group">
+                <label for="Type">Food Name</label>
+                <input asp-for="Name" name="Name" class="form-control" value="@Model.Name"  required />
+                <br><br>
+            </div>
+            <div class="form-group">
+                <label for="Price">Price</label>
+                <input asp-for="Price" name="Price" type="number" class="form-control" value="@Model.Price" required />
+                <br><br>
+            </div>
+              <div class="form-group">
+                        <label for="Quantity">Quantity</label>
+                        <input type="number" name="Quantity"   id="Quantity" class="form-control" required/>
+                    </div>
+            <div class="form-group">
+                <label for="OrderStatus">Status</label>
+                <select name="Status" class="form-control" required>
+                     @* <option value="2">Processing</option>
+                            <option value="3">Done</option> *@
+                            <option value="7">Available</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Image">Image</label>
+                <input asp-for="Image" name="Image" type="file" class="form-control" value="@Model.Image" required />
+                <br><br>
+            </div>
+        </div>
+        <div>
+            <input class="btn btn-primary" type="submit" value="Submit" />
+        </div>
+    </form>
+</div>

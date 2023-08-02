@@ -1,0 +1,74 @@
+
+
+
+ @* @using RDMS.Models.Dtos
+ @using RDMS.Models.Enums
+ @model BaseResponce<IEnumerable<FoodDto>> *@
+ @* @model  IEnumerable<FoodDto> *@
+    @using RDMS.Models.Dtos
+    @using RDMS.Models.Enums
+      @model BaseResponce<IEnumerable<FoodDto>> 
+    
+            @* 'RDMS.Models.Dtos.BaseResponce`1[System.Collections.Generic.IEnumerable`1[RDMS.Models.Dtos.FoodDto]]'. *@
+@{
+    ViewData["Title"] = "Foods.cshtml";
+}
+
+    <link rel="stylesheet" href="~/css/foods.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" />
+    <script src="~/scripts/w3.js"></script>
+    <div class="form-group">
+       <i class="fa fa-search-minus"></i><input type="search" id="search" class="form-control" oninput="w3.filterHTML('#list', '.food', this.value)" placeholder="Search for food">
+    </div>
+@if (@Model == null || @Model.Data.Count() == 0)
+{
+    <h1>No Food yet</h1>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table" id="list">
+            <caption>List of foods</caption>
+            <thead>
+                @* <tr>
+                    <th scope="col">S/N</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                </tr> *@
+            </thead>
+            <tbody>
+        </div>
+    <div class="images">
+        @foreach (var food in @Model.Data)
+        {
+            <div class="post-image">
+                @if (food.OrderStatus !=   OrderStatus.NotAvailable)
+                @* @if (food.Name !=   food.Name) *@
+                {   
+                        <img  asp-append-version="true" src="~/Upload/Images/@food.Image"  alt="food.Data image">
+                        <h6 class="food"></h6>
+                        <h6>@food.Id</h6>
+                        <h6>@food.FoodName</h6>
+                        <p>@food.Price</p>
+                        <p>@food.OrderStatus <input type="hidden" value="hidden" > </p>                        
+                        <div class="btn-group">
+                        <a class="btn-danger btn" asp-action="DeleteFood" asp-route-id=@food.Id style="border-radius: 5px;">Delete</a>
+                        <a class="btn-warning btn" asp-action="Update" asp-route-id=@food.Id style="border-radius: 5px;">Update</a>
+                        </div>
+                }
+                else
+                {
+                        <img src="~/Upload/Images/@food.Image" alt="food.Data image">
+                        <h6>@food.Name</h6>
+                        <p>$ @food.Price</p>
+                        <p>@food.OrderStatus</p>
+                        <div class="btn-group">
+                        <a class="btn-danger btn" asp-action="DeleteFood" asp-route-id=@food.Id style="border-radius: 5px;">Delete</a>
+                        <a class="btn-warning btn" asp-action="EditFood" asp-route-id=@food.Id style="border-radius: 5px;">Update</a>
+                        </div>
+                }
+            </div>
+        }
+</div>
+}

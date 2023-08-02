@@ -1,0 +1,71 @@
+
+
+
+
+
+@* @using RDMS.Models.Dtos
+@using RDMS.Models.Enums
+@model IEnumerable<FoodDto> *@
+@* (awaitable) Task<BaseResponce<IEnumerable<FoodDto>>> *@
+    <link rel="stylesheet" href="~/styles/index.css">   
+    <script src="~/scripts/w3.js"></script>
+<body class="w3-container">
+ <div class="page-container">
+            <div class="page-title">
+                <h1 class="message" >Order food Online For Dine in, Take away, Home delivery</h1>
+                <h1 class="message">We make live easy for you, Home delivery</h1>
+                <h1 class="message">The word largest food web application, Home delivery</h1>
+                <h1 class="message">Always ready for you, Home delivery</h1>
+                <ul>
+                    <li><label for=""Select Location></label></li>
+                    <select id="location">
+                        <option value="none">--select location--</option>
+                        <option value="m" >Lagos</option>
+                        <option value="f" >Ogun</option>
+                        <option value="f" >Ondo</option>
+                        <option value="f" >Oyo</option>
+                        <option value="f" >Osun</option>
+                        <option value="f" >Edo</option>
+                        <option value="f" >Niger</option>
+                        <option value="f" >Ekiti</option>
+                        <option value="f" >Kogi</option>
+                        <option value="f" >Rivers</option>
+                    </select>  
+                    <input type="search" name="" id="search" placeholder="Search" oninput="w3.filterHTML('.images', '.post-image', this.value)">
+                </ul>
+            </div>
+            <div class="posted-food">
+                <h3>Newly listed food ready for delivery</h3>
+            </div>
+    <div class="images">
+           @foreach (var food in @Model)
+        {
+         <div class="post-image">
+            @* @if (food.OrderStatus  != OrderStatus.NotAvailable) *@
+            {   
+                        <img  asp-append-version="true" src="~/Upload/Images/@food.Image"  alt="food.Data image">
+                        <h6>@food.Name</h6>
+                         <p>@food.Price</p>
+                        <p>@food.OrderStatus</p>   
+                        <p>@food.</p>   
+                        <div class="btn-group">
+                        <a class="btn-primary btn" asp-controller="Order" asp-action="MakeOrder" asp-route-id=@food.Id>Order</a>
+                        </div>              
+            }
+            else
+            {
+                        <img  asp-append-version="true" src="~/Upload/Images/@food.Image"  alt="food.Data image">
+                        <h6>@food.Name</h6>
+                        <p>$ @food.Price</p>
+                        <p>@food.OrderStatus</p>   
+            }
+        </div>
+        }
+    </div>
+ </div>
+ <script>
+        w3.slideshow(".message",2500);
+</script>
+       
+</body>
+</html>

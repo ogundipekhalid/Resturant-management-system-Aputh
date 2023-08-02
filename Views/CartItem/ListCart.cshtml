@@ -1,0 +1,48 @@
+@using RDMS.Models.Dtos
+@model IEnumerable<CartItemDto>
+
+@{
+    var routeId = ViewBag.routeId;
+}
+<div class="">
+    <div class="text-end pb-2">
+        @* <a asp-action="Add" asp-controller="Category" class="btn btn-primary" asp-route-id="@routeId">Add Category</a> *@
+        </div>
+    <table class="table table-striped table-hover table-bordered" id="dataTable" width="" cellspacing="0">
+        <thead>
+            <tr>
+                <th>S/N</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quentity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model.Count() > 0)
+            {
+                var SerialNumber = 1;
+                foreach (var category in Model)
+                {
+                    <tr>
+                        <td>@SerialNumber</td>
+                        <td>@category.FoodName</td>
+                        <td>@category.Price</td>
+                        <td>@category.Quantity</td>
+                        @* <td>
+                            <a asp-action="Update" asp-controller="Category" asp-route-id="@category.Id">Edit</a>
+                        </td>
+                        <td id="Remove" name="@category.FoodName">
+                            <a asp-action="Delete" asp-controller="Category" asp-route-id="@category.Id">Remove</a>
+                        </td> *@
+                    </tr>
+                    SerialNumber++;
+                }
+            }
+            else{
+                <tr>
+                    <td colspan="7" class="text-center">Not Found</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

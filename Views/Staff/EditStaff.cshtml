@@ -1,0 +1,39 @@
+ @* @using RDMS.Model.Dto
+@model  BaseResponce<StaffDto> *@
+@{
+    Layout = "~/Views/Shared/_SecondLayOut.cshtml";
+}
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Update Staff</h2>
+            <form asp-action="EditStaff">
+                <div class="form-group">
+                    <label for="Data.User.FirstName">First Name</label>
+                    <input for="Data.User.FirstName" type="text" name="Data.User.FirstName" id="FirstName" class="form-control" value="@Model.Data.User.FirstName" required/>
+                </div>
+                 <div class="form-group">
+                    <label for="Data.User.LastName">Last Name</label>
+                    <input type="text" name="Data.User.LastName" id="LastName" class="form-control" required/>
+                </div>
+                 <div class="form-group">
+                    <label for="Data.User.PhoneNumber">Phone Number</label>
+                    <input type="number" name="Data.User.PhoneNumber" id="phone" class="form-control" value="@Model.Data.User.PhoneNumber" required/>
+                </div>
+                 <div class="form-group">
+                    <label for="Data.User.Email">Email</label>
+                    <input type="number" name="Data.User.Email" id="email" class="form-control" value="@Model.Data.User.Email" required/>
+                </div>
+                <div class="form-group" required>
+                 <label for="Role">Role</label>
+                 <select name="Role" class="form-control">
+                 <option value="none" disabled>--select role--</option>
+                 <option value="1">Admin</option>
+                 <option value="2" >Cook</option>
+                 <option value="3" >Cleaner</option>
+                 <option value="4" >Transporter</option>
+                 </select>
+                 </div>
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    </div>

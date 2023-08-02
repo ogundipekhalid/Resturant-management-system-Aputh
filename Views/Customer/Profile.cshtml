@@ -1,0 +1,23 @@
+
+
+
+   @model RDMS.Models.Dtos.CustomerDto
+
+@{
+    @* ViewData["CutomerName"] = @Model.FirstName + " " +Model.LastName; *@
+}
+
+
+<div>
+    <h4>Id : @User.Identity?.Name!</h4><br><br>
+    <h4>FirstName : @Model.FirstName</h4><br><br>
+    <h4> LastName : @Model.LastName</h4><br><br>
+    <h4>Email : @Model.Email</h4><br><br>
+    <h4>Phone Number:@Model.PhoneNumber </h4>
+    
+</div>
+<style>
+    div{
+        color: cornflowerblue;
+    }
+</style>

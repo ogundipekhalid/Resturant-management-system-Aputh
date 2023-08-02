@@ -1,0 +1,84 @@
+ @model IEnumerable<RDMS.Models.Dtos.CustomerDto> 
+   <div>
+    <table class="table table-active table-bordered table-responsive table-striped">
+    <thead>
+          <tr>
+                <th>S/N</th>
+                <th>UserId</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>PhoneNumber</th>
+                <th>Edith</th>
+                <th>Details</th>
+                <th>Remove</th>
+                <th>Profile</th>
+            </tr>
+
+        </thead>
+        <tbody >
+            @foreach (var cutomers in Model)
+            {
+                <tr>
+                @* <tr> *@
+                    <td>@cutomers.Id</td>
+
+                    <td>@cutomers.UserId</td>
+                
+                    <td>@cutomers.FirstName</td>
+                  
+                    <td>@cutomers.LastName</td>
+                
+                    <td>@cutomers.Email</td>
+                      
+                    <td>@cutomers.PhoneNumber</td>
+            
+                    <td>
+                        <a asp-controller="Customer" asp-action="Update" asp-route-id="@cutomers.Id"> Edith </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Customer" asp-action="Details" asp-route-id="@cutomers.Id"> Details </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Customer" asp-action="Delete" asp-route-id="@cutomers.Id"> Remove </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Customer" asp-action="Profile" asp-route-id="@cutomers.Id"> Get </a>
+                    </td>
+
+                    <td>
+                        <a asp-controller="Order" asp-action="OrderStatus"  asp-route-id="@cutomers.Id"> del </a>
+                    </td>
+                    @* <td>
+                        <a asp-controller="Order" asp-action="OrderStatus"  asp-route-email="@cutomers.Email"> del </a>
+                    </td>  *@
+                    <td>
+                        <a asp-controller="Order" asp-action="OrderStatus"  asp-route-userid="@cutomers.UserId"> del </a>
+                     </td> 
+                    @* <td>
+                        <a asp-controller="Order" asp-action="OrderStatus"  asp-route-customerid="@cutomers.Id"> del </a>
+                    </td> *@
+                </tr>
+            }
+            <style>
+                tr {
+                    color: cadetblue;
+                    text-transform: uppercase;
+                }
+
+                td. {
+                    color: cornflowerblue;
+                }
+
+                table,
+                th,
+                td {
+                    border: 1px solid;
+                }
+           </style>
+        </tbody>
+    </table>
+</div>
+
+
+

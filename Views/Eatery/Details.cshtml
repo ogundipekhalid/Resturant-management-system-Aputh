@@ -1,0 +1,71 @@
+@model RDMS.Models.Dtos.EateryDto
+
+@{
+    ViewData["Title"] = "Company Details";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Specify the desired background color here */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .logo {
+            width: 150px; /* Adjust the width of the logo as needed */
+            height: auto;
+            margin-right: 20px;
+        }
+
+        .table {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        @* <div style="display: flex;"> *@
+        <div style="">
+            <div style="margin-right: 20px;">
+                @* <img src="~/Upload/Images/@Model.Logo" height="100" width="100" class="logo"> *@
+            </div>
+            <div>
+                <table class="table">
+                    <tr>
+                        <td>Name</td>
+                        <td>@Model.Name</td>
+                    </tr>
+                    <tr>
+                        <td>Registration Number</td>
+                        <td>@Model.CertificationNumber</td>
+                    </tr>
+                    <tr>
+                        <td>Certificate</td>
+                        @* <td>@Model.Certificate</td> *@
+                        <td>
+                             <a target="_blank" href="~/Upload/images/@Model.Certificate" class="btn" >View</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Logo</td>
+                        @* <td>@Model.Logo</td> *@
+                        <td>
+                            <a target="_blank" href="~/Upload/images/@Model.Logo" class="btn" >View</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

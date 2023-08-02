@@ -1,0 +1,51 @@
+@model IEnumerable<RDMS.Models.Dtos.UserDto>
+
+
+
+@{
+    ViewData["Title"] = "List of Users";
+}
+<div>
+    <div class="text-center">welcome <h6>@ViewBag.email</h6></div>
+    <div>
+        <div class="text-center"><h4>@ViewData["Title"]</h4></div>
+        <div class="text-end">
+        </div>
+    </div>
+    <div class="pt-4">
+        <table class="table table-bordered table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Email</th>
+                    <th>PhoneNumber</th>
+                    <th>Detail</th>
+                    @* <th>Delete</th> *@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.Id</td>
+                        <td>@user.FirstName</td>
+                        <td>@user.LastName</td>
+                        <td>@user.Email</td>
+                        <td>@user.PhoneNumber</td>
+                        <td>
+                            <a asp-controller="User" asp-action="Details" asp-route-id="@user.Id">View</a>
+                        </td>
+                        @* <td>
+
+                        </td> *@
+                    </tr>
+                }
+            </tbody>
+            <div>
+
+            </div>
+        </table>
+    </div>
+</div> 

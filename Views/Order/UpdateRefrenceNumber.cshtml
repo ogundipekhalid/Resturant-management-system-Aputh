@@ -1,0 +1,13 @@
+@* @using RDMS.Models.Dtos
+@model OrderDto *@
+ @using RDMS.Models.Dtos
+@model  BaseResponce<OrderDto>
+
+
+<form asp-action="UpdateRefrenceNumber">
+            <div>
+                <label for="ReferenceNumber"> ReferenceNumber </label>
+                <input  name="ReferenceNumber" value="@Model.Data.ReferenceNumber"required/>
+                <br><br>
+            </div>  
+    </form>

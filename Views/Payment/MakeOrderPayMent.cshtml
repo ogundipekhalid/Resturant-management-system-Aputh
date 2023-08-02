@@ -1,0 +1,109 @@
+
+
+
+@using RDMS.Models.Dtos
+@model BaseResponce<IEnumerable<CartItemDto>>
+
+@{
+    ViewData["Title"] = "Order Details";
+}
+@* 
+<div class="">
+    <div class="row">
+        <div>
+            <h6 class="pt-2" style="">
+            </h6>
+            <h6 class="pt-2">
+            </h6>
+        </div>
+        <div class="row col-md-10 pt-3">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <table class="table">
+                    <tr>
+                        <td style="width: 50%;"></td>
+                        <td class="text-center" style="width: 50%;">
+                   
+                <tr> 
+                        <td>
+                            @foreach (var item in Model.Data)
+                            {
+                                <tr>
+                                    <td> Name </td>
+                                    <td>
+                                         @item.FoodName
+                                    </td>
+                                    <td> Price </td>
+                                    <td>
+                                         @item.Price
+                                    </td>
+                                    <td> Price </td>
+                                    <td>
+                                         @item.Total
+                                    </td>
+                                </tr>
+                            }
+                    </td>
+                 </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> *@
+
+
+
+   <div>
+    <table class="table table-active table-bordered table-responsive table-striped">
+    <thead>
+          <tr>
+                <th>S/N</th>
+                <th> FoodName</th>
+                <th>Total</th>
+                <th>Payment</th>
+            </tr>
+        </thead>
+        <tbody >
+             @foreach (var item in Model.Data)
+                            {
+                                <tr>
+                                    <td>
+                                         @item.Id
+                                    </td>
+                                    <td>
+                                         @item.FoodName
+                                    </td>
+                                    <td>
+                                         @item.Price
+                                    </td>
+                                    <td>
+                                         @item.Total
+                                    </td>
+                                        <td>
+                                            <a asp-controller="Payment" asp-action="Payments" asp-route-Total="@item.Total"> Payment </a>
+                                        </td>
+                                </tr>
+                            }
+            
+            <style>
+                tr {
+                    color: cadetblue;
+                    text-transform: uppercase;
+                }
+
+                td. {
+                    color: cornflowerblue;
+                }
+
+                table,
+                th,
+                td {
+                    border: 1px solid;
+                }
+           </style>
+        </tbody>
+    </table>
+</div>
+
+
+

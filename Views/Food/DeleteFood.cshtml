@@ -1,0 +1,21 @@
+@* @using EF_Core.Models.DTOs.ResponseModels
+@model FoodResponsModel *@
+ @using RDMS.Models.Dtos
+@model BaseResponce<FoodDto> 
+@* @model RDMS.Models.Dtos.FoodDto *@
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/styles/index.css">   
+<span>Are You Sure You Want To delete this Food?</span>
+<div class="images">
+        <div class="post-image">
+                    <img  src="~/Upload/Images/@Model.Data.Image"  alt="Model image">
+                    <h6>@Model.Data.Name</h6>
+                    <p>$ @Model.Data.Price</p>
+    <form asp-action="DeleteFood">
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+
+        </div>
+    </div>
+</div>

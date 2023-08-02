@@ -1,0 +1,49 @@
+
+
+   @model RDMS.Models.Dtos.BranchDto 
+  @* @using RDMS.Models.Dtos *@
+@* @model BaseResponce<IEnumerable<BranchDto>>  *@
+@* @model IEnumerable<BranchDto>  *@
+  
+    
+@{
+    ViewData["Title"] = "Update Branch";
+}
+
+
+<link rel="stylesheet" href="~/css/menu.css">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form asp-controller="Branch" asp-action ="Update" >
+             <div>
+                <input asp-for="Id" class="form-control" type="hidden" value="@Model.Id" type="hidden" required/>
+            </div> 
+            <div>
+                 <input asp-for="EateryId" class="form-control" type="hidden" value="@Model.EateryId" type="hidden" required/> 
+            </div> 
+            <div>
+                <label for="Name">Name</label>
+                <input type="text" name="Name" value="@Model.Name" required/>
+            </div>
+            <div>
+                <label for="Street"> Street </label>
+                <input type="text" name="Street" value="@Model.AddressName.Street" required/>
+            </div>
+            <div>
+                <label for="Street"> City  </label>
+                <input type="text" name="City" value="@Model.AddressName.City"required/>
+            </div>
+            <div>
+                <label for="Street"> State </label>
+                <input type="text" name="State" value="@Model.AddressName.State" required/>
+            </div>
+     
+                <div>
+                    <button class="btn btn-primary" style="width: 30%;">Update Branch</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>

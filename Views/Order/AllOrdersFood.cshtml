@@ -1,0 +1,69 @@
+
+@* @using RDMS.Models.Dtos;
+@model BaseResponce<IEnumerable<OrderDto>>; *@
+@using RDMS.Models.Entity
+@using RDMS.Models.Enums
+@model List<OrderFood>
+    
+
+<div>
+    <table class="table table-active table-bordered table-responsive table-striped">
+    <thead>
+          <tr>
+                <th>S/N</th>
+                <th>Price</th>
+                <th>RefNumber</th>
+                <th>Price</th>
+                <th>Edith</th>
+                <th>Details</th>
+                <th>Remove</th>
+                <th>Profile</th>
+                <th>order</th>
+            </tr>
+
+        </thead>
+        <tbody >
+            @foreach (var order in @Model)
+            {
+                <tr>
+                    @* <img  asp-append-version="true" src="~/Upload/Images/@food.Image"  alt="food.Data image" class="size-10"> *@
+                 <td>@order.Id</td>
+                
+                    <td>@order.Quantity</td>
+                                  
+                    <td>@order.Order</td>
+
+                    <td>@order.Food</td>
+                                   
+                    @* 
+                   <td>
+                        <a asp-controller="Order" asp-action="MakeOrder" asp-route-id="@order.Id">Order </a>
+                    </td> 
+                   <td>
+                        <a asp-controller="Order" asp-action="MakeOrder" asp-route-id="@order.Id">Order </a>
+                    </td> 
+                   <td>
+                        <a asp-controller="Order" asp-action="MakeOrder" asp-route-id="@food.Id">Order </a>
+                    </td> *@
+                </tr>
+            }
+
+            <style>
+                tr {
+                    color: cadetblue;
+                    text-transform: uppercase;
+                }
+
+                td. {
+                    color: cornflowerblue;
+                }
+
+                table,
+                th,
+                td {
+                    border: 1px solid;
+                }
+           </style>
+        </tbody>
+    </table>
+</div>

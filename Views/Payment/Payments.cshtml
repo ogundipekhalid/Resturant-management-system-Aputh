@@ -1,0 +1,84 @@
+ @using System.Security.Claims;
+
+@* 
+<html>
+   <body>
+      <form id="paymentForm">
+        <div class="form-group">
+          <input type="email" id="email-address" value="@User.FindFirst(ClaimTypes.Email).Value" required hidden />
+        </div>
+        <div class="form-group">
+          <input type="number" id="amount" value="300"  required />
+        </div>
+         <div class="form-head"><span class="reg-form">Order Payment </span></div>
+        <div>
+            <h3 style="text-align: center;">
+              <b>If you are seeing this,that means this  you will recive a message in your email</b></h3>
+            <h3><br></i>To be sure that you are intrested in our Ordring,you need to pay amount of food you Order (using @User.FindFirst(ClaimTypes.Email).Value) </i></h3>
+        </div>
+        <div class="form-bottom">
+          <button asp-route-userEmail="@User.FindFirst(ClaimTypes.Email).Value"   style="border: 0%;" class="submit-form" type="submit" onclick="payWithPaystack()"> Pay </button>
+        </div>
+        
+      </form> 
+   <script src="https://js.paystack.co/v1/inline.js"></script> 
+      <script src="~/js/transaction.js" asp-append-version="true"></script>
+  </body>
+    
+</html> *@
+
+
+ 
+ <form id="paymentForm">
+    <div class="form-group">
+        <input type="email" id="email-address"  value="@User.FindFirst(ClaimTypes.Email).Value" required />
+    </div>
+    <div class="form-group">
+        <input type="tel" id="amount" required readonly />
+    </div>
+    <div class="form-head"><span class="reg-form">Payment Request</span></div>
+    <div class="form-bottom">
+        <button a style="border: 0%;" class="submit-form" type="submit" onclick="payWithPaystack()"> Pay </button>
+    </div>
+</form>
+
+
+
+<script>
+    let amount = location.href.split('=')[1];
+    let amountInput = document.getElementById('amount');
+        amountInput.value  = Number(amount);
+    let amount = location.href.split('=')[2];
+    let amountInput = document.getElementById('email');
+        amountInput.value  = Number(email);
+    </script>
+    <script>
+    const paymentForm = document.getElementById('paymentForm');
+    paymentForm.addEventListener("submit", payWithPaystack, false);
+    function payWithPaystack(e) {
+        e.preventDefault();
+
+        let handler = PaystackPop.setup({
+            key: 'pk_test_df4b0fd403b05bb47524d2f1156f5c94f31e2063', // Replace with your public key
+            email: document.getElementById("email-address").value,
+            amount: document.getElementById("amount").value * 100,
+            ref: '' + Math.floor((Math.random() * 1000000000) + 1),  // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+            // label: "Optional string that replaces customer email"
+            onClose: function () {
+                alert('Window closed.');
+            },
+            callback: function (response) {
+                let message = 'Payment complete! Reference: ' + response.reference;
+                alert(message);
+                if (document.getElementById("amount").value == "200") {
+                    var x = location.href.split('/')[1];
+                    var y = x[x.length-1].split('?')[0];
+                    @* window.location = 'https://localhost:7297/Trips/AddTrip=${y}`; *@
+                    window.location = 'https://localhost:7119/PayMent/MakeOrderPayMent=${y}`;
+               }
+            }
+
+        });
+        handler.openIframe();
+    }
+    </script>

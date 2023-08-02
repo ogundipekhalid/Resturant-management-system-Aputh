@@ -1,0 +1,53 @@
+@model RDMS.Models.Dtos.CommentDto
+@* @using RDMS.Models.Dtos
+@model UpdateCustomerRequestModel *@
+
+<h2>Customer Update Form</h2>
+<div>
+    <form asp-action="UpdateComment">
+        <div>
+           
+            <div>
+                <label for=""> Comment </label>
+                <input asp-for="CommentText" name="CommentText"  value="@Model.CommentText" />
+                <span asp-validation-for="CommentText"></span>
+                <br><br>
+            </div>
+        </div>
+        <div>
+            <input class="btn btn-primary" type="submit" value="Submit" />
+        </div>
+      
+    </form>
+</div>
+
+<style>
+    #objDiv,
+    #updateOjbectForm {
+        padding: 10px;
+    }
+
+    #object {
+        border: solid 1px #ccc;
+        padding: 10px;
+    }
+
+    p {
+        margin: 5px 0;
+    }
+
+    label {
+        display: inline-block;
+        width: 60px;
+        padding-right: 5px;
+        text-align: right
+    }
+
+    #updateOjbectForm label {
+        display: inline-block;
+        width: 80px;
+        text-align: right;
+        margin-right: 10px;
+    }
+</style>
+

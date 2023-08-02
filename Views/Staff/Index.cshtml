@@ -1,0 +1,63 @@
+
+ @using RDMS.Models.Dtos
+ @model BaseResponce<IEnumerable<StaffDto>>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" />
+    <script src="~/scripts/w3.js"></script>
+    <div class="form-group">
+       <i class="fa fa-search-minus"></i><input type="search" id="search" class="form-control" oninput="w3.filterHTML('#list', '.staff', this.value)" placeholder="Search for staff">
+    </div>
+@if (@Model == null || @Model.Data.Count() == 0)
+{
+    <h1>No Staff yet</h1>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table" id="list">
+            <caption>List of Staffs</caption>
+            <thead>
+                <tr>
+                    <th scope="col">S/N</th>
+                    <th scope="col">FirstName</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Edith</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var staff in @Model.Data)
+                {
+                    <tr class="staff">
+                        <th scope="row">@staff.Id</th>
+                        <td>@staff.FirstName</td>
+                        <td>@staff.LastName</td>
+                        <td>@staff.Email</td>
+                        <td>@staff.PhoneNumber</td>
+                        <td>@staff.Roles</td>
+                        <td>
+                            <div class="btn-group">
+                                <a class="btn-primary btn" asp-action="StaffProfile" asp-route-id=@staff.Id>View</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                 <a class="btn-warning btn" asp-action="Update" asp-route-id=@staff.Id>Edit</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <a class="btn-danger btn" asp-action="DeleteStaff" asp-route-id=@staff.Id>Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

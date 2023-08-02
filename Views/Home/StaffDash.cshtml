@@ -1,0 +1,127 @@
+
+@{
+    ViewData["Title"] = "Staff List";
+    var staff = "~/Views/Staff/GetAll.cshtml";
+}
+
+<link rel="stylesheet" href="~/dash/css.css">
+<link rel="stylesheet" href="~//css.css">
+<link rel="stylesheet" href="../founder/css.css">
+
+<div id="container">
+  <div id="content">
+    <div id="titleBar">
+         <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @* <title>AdminLTE 3 | Dashboard</title> *@
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    
+    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    
+    <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+    
+    <link rel="stylesheet" href="dist/css/adminlte.min.css?v=3.2.0">
+    
+    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    
+    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+    
+    <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+    <script defer referrerpolicy="origin" src="js/s.js"></script><script nonce="bc5f313f-7f93-4bbe-ab7f-e8e3630f7a67">(function(w,d){!function(f,g,h,i){f[h]=f[h]||{};f[h].executed=[];f.zaraz={deferred:[],listeners:[]};f.zaraz.q=[];f.zaraz._f=function(j){return function(){var k=Array.prototype.slice.call(arguments);f.zaraz.q.push({m:j,a:k})}};for(const l of["track","set","debug"])f.zaraz[l]=f.zaraz._f(l);f.zaraz.init=()=>{var m=g.getElementsByTagName(i)[0],n=g.createElement(i),o=g.getElementsByTagName("title")[0];o&&(f[h].t=g.getElementsByTagName("title")[0].text);f[h].x=Math.random();f[h].w=f.screen.width;f[h].h=f.screen.height;f[h].j=f.innerHeight;f[h].e=f.innerWidth;f[h].l=f.location.href;f[h].r=g.referrer;f[h].k=f.screen.colorDepth;f[h].n=g.characterSet;f[h].o=(new Date).getTimezoneOffset();if(f.dataLayer)for(const s of Object.entries(Object.entries(dataLayer).reduce(((t,u)=>({...t[1],...u[1]})),{})))zaraz.set(s[0],s[1],{scope:"page"});f[h].q=[];for(;f.zaraz.q.length;){const v=f.zaraz.q.shift();f[h].q.push(v)}n.defer=!0;for(const w of[localStorage,sessionStorage])Object.keys(w||{}).filter((y=>y.startsWith("_zaraz_"))).forEach((x=>{try{f[h]["z_"+x.slice(7)]=JSON.parse(w.getItem(x))}catch{f[h]["z_"+x.slice(7)]=w.getItem(x)}}));n.referrerPolicy="origin";n.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(f[h])));m.parentNode.insertBefore(n,m)};["complete","interactive"].includes(g.readyState)?zaraz.init():f.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document);</script>
+
+    <script nonce="b42ace99-3367-481c-a6b3-24c5502b3e9a"> </script>
+
+
+
+<section class="content">
+<div class="container-fluid">
+
+<div class="row">
+<div class="col-lg-3 col-6">
+
+        <div class="small-box bg-info">
+        <div class="inner">
+        <h3>150</h3>
+        <p>Orders Make by Customer</p>
+        </div>
+        <div class="icon">
+        <i class="ion ion-bag"></i>
+        </div>
+        <a asp-action="" asp-controller="Customer"  class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+        </div>
+
+        <div class="col-lg-3 col-6">
+        <div class="small-box bg-danger">
+        <div class="inner">
+        <h3>65</h3>
+        <p>List of Catigories</p>
+        </div>
+        <div class="icon">
+        <i class="ion ion-pie-graph"></i>
+        </div>
+        <a  asp-action="GetAll" asp-controller="Categories" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+        </div>
+</div>
+
+
+</section>
+<div>
+
+      @await Html.PartialAsync(staff)
+                     
+  
+
+
+  </div>
+</div>
+
+
+  
+<script src="js/jquery.min.js"></script>
+
+<script src="js/jquery-ui.min.js"></script>
+
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+
+<script src="js/Chart.min.js"></script>
+
+<script src="js/sparkline.js"></script>
+
+<script src="js/jquery.vmap.min.js"></script>
+<script src="js/jquery.vmap.usa.js"></script>
+
+<script src="js/jquery.knob.min.js"></script>
+
+<script src="js/moment.min.js"></script>
+<script src="js/daterangepicker.js"></script>
+
+<script src="js/tempusdominus-bootstrap-4.min.js"></script>
+
+<script src="js/summernote-bs4.min.js"></script>
+
+<script src="js/jquery.overlayScrollbars.min.js"></script>
+
+<script src="js/adminlte.js"></script>
+
+<script src="js/demo.js"></script>
+
+<script src="js/dashboard.js"></script>
+
+
+<script src="~/branchdash.js"></script>
+<script src="js/branchdash.js"></script>
+<script src="founder/index.js"></script>
+<script src="../js/index.js"></script>

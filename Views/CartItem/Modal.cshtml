@@ -1,0 +1,72 @@
+@* @{
+    List<string> newList = new List<string>();
+    var invoiceStatus = ViewBag.InvoiceStatus ?? newList;
+} *@
+<!-- Modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Invoice</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @* <form asp-action="MakeOrder" asp-controller="Order" id="CartForms"> *@
+             <form asp-action="Model" asp-controller="CartItem" id="CartForms">
+                <div class="modal-body mb-2 CustomerForm">
+                    <span class="mb-2">Customer Details</span>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div>
+                                <label for="RefNumber">Invoice No</label>
+                                <input type="text" class="form-control" name="InvoiceNo" id="RefNumber">
+                                <span id="RefNumber" name="RefNumber" class="error-text"></span>
+                            </div>
+                            <div>
+                                <label for="Name">Name</label>
+                                <input type="text" class="form-control" name="Name" id="Name">
+                                <span id="NameError" name="Name" class="error-text"></span>
+                            </div>
+                            <div>
+                                <label for="Email">Email</label>
+                                <input type="text" class="form-control" name="Email" id="Email">
+                                <span id="EmailError" name="Email" class="error-text"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-7 row">
+                            <div>
+                                <label for="PhoneNumber">Phone</label>
+                                <input type="tel" class="form-control" id="PhoneNumber" name="PhoneNumber">
+                                <span id="PhoneNumberError" name="Phone No" class="error-text"></span>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="StreetAddress">Street</label>
+                                    <input type="text" class="form-control" id="StreetAddress" name="StreetAddress">
+                                    <span id="StreetAddressError" name="Street" class="error-text"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="City">City</label>
+                                    <input type="text" class="form-control" id="City" name="City">
+                                    <span id="CityError" name="City" class="error-text"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="State">State</label>
+                                    <input type="text" class="form-control" id="State" name="State">
+                                    <span id="StateError" name="State" class="error-text"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cartDetails"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 

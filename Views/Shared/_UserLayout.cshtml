@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sidebar Menu</title>
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/menu.css">
+  <link rel="stylesheet" href="style.css">
+  @await RenderSectionAsync("Styles", required: false)
+</head>
+
+<body>
+  <nav>
+    <div class="sidebar-top">
+      <span class="shrink-btn">
+        <i class='bx bx-chevron-left'></i>
+      </span>
+      <img src="~/img/logo.png" class="logo" alt="">
+      <h3 class="hide">LASIX</h3>
+    </div>
+
+    <div class="search">
+      <i class='bx bx-search'></i>
+      <input type="text" class="hide" placeholder="Quick Search ...">
+    </div>
+    
+      <div style="display: flex;" class="text-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <img src="~/icon/shopping_cart_checkout.svg" alt="" style="">
+        <span class="text-white" style="border-radius: 10px">
+          &nbsp;<i class="TotalItem" style="">0</i>&nbsp;
+        </span>
+        <span class="TotalPrice" style="line-height: 50px">0.00</span>
+      </div>
+
+    @await Html.PartialAsync("~/Views/User/Menu.cshtml")
+  </nav>
+  <main>
+     @RenderBody()
+     
+    <p class="copyright">
+        @* &copy; 2023 - <span>LASIX</span> All Rights Reserved. *@
+    </p>
+  </main>
+
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+     @* <script src="https://js.paystack.co/v1/inline.js"></script> 
+      <script src="~/js/transaction.js" asp-append-version="true"></script> *@
+  <script src="~/js/app.js"></script>
+  
+   @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

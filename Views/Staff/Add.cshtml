@@ -1,0 +1,243 @@
+@model RDMS.Models.Dtos.CreateStaffRequestModel
+@using System.Security.Claims;
+
+@{
+  Layout = null;
+
+  @* @User.FindFirst(ClaimTypes.Role)?.Value *@
+
+}
+
+
+<style>
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  .dropdown button:focus {
+    outline: none;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    background-color: #f8f9fa;
+    min-width: 200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    z-index: 1;
+  }
+
+  .dropdown-item {
+    display: block;
+    padding: 5px;
+    color: #333;
+    text-decoration: none;
+  }
+
+  .dropdown-item:hover {
+    background-color: #e9ecef;
+  }
+
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+  }
+
+  .wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    text-align: center;
+    color: #007bff;
+  }
+
+  form {
+    margin-top: 20px;
+  }
+
+  .input-box {
+    margin-bottom: 20px;
+  }
+
+  .label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+  }
+
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    border-color: #007bff;
+  }
+
+  input[type="Submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  input[type="Submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  .text {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .text a {
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .dropdown button:focus {
+    outline: none;
+  }
+
+  .dropdown button:hover {
+    background-color: #0056b3;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    background-color: #f8f9fa;
+    min-width: 200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    z-index: 1;
+  }
+
+  .dropdown-item {
+    display: block;
+    padding: 5px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .dropdown-item:hover {
+    background-color: #e9ecef;
+  }
+</style>
+
+
+
+    @* <section style="background-color: #eee;"> *@
+<body style="background-color: rgb(143, 154, 163);" >
+  <div class="wrapper">
+    <h2>Registration</h2>
+    <form asp-action="Add" asp-controller="Staff" >
+      <div class="input-box">
+        <input name="branchId" value="Model.branchId" hidden>
+      </div>
+      <div class="input-box">
+        @* <label asp-for="FirstName"></label> *@
+        <label for="">FirstName</label>
+        <input type="text" asp-for="FirstName" required>
+        <span asp-validation-for="FirstName"></span>
+      </div>
+      <div class="input-box">
+        @* <label asp-for="LastName"></label> *@
+        <label for="">LastName</label>
+        <input type="text" asp-for="LastName" required>
+        <span asp-validation-for="LastName"></span>
+      </div>
+      <div class="input-box">
+        <label asp-for="Email"></label>
+        <input type="email" asp-for="Email" placeholder="Enter your email" required>
+        <span asp-validation-for="Email"></span>
+        <p> @if (TempData["ErrorMessage"] != null)
+          {<h1>@TempData["ErrorMessage"]</h1>}</p>
+      </div>
+      <div class="input-box">
+        <label asp-for="PhoneNumber"></label>
+        <input type="number" asp-for="PhoneNumber" placeholder="phonenumber" required>
+        <span asp-validation-for="PhoneNumber"></span>
+      </div>
+      <div class="input-box">
+        <label asp-for="Password"></label>
+        <input type="password" asp-for="Password" placeholder="enter your password" required>
+        <span asp-validation-for="Password"></span>
+      </div>
+      <div class="input-box">
+        <label asp-for="Street"></label>
+        <input type="text" asp-for="Street"  placeholder="enter branch Staff street" required>
+        <span asp-validation-for="Street"></span>
+      </div>
+      <div class="input-box">
+        <label asp-for="State"></label>
+        <input type="text" asp-for="State" placeholder="enter your State" required>
+        <span asp-validation-for="State"></span>
+      </div>
+      <div class="input-box">
+        <label asp-for="City"></label>
+        <input type="text" asp-for="City" placeholder="enter your City" required>
+        <span asp-validation-for="City"></span>
+      </div>
+      <div class="input-box">
+        <label asp-for="ZipCode"></label>
+        <input type="number" asp-for="ZipCode" placeholder="enter your ZipCode" required>
+        <span asp-validation-for="ZipCode"></span>
+      </div>
+      <div class="form-group">
+        <label for="Roles">Role</label>
+        <select name="Roles" class="form-control" required>
+          <option value="Roles" disabled>--select role--</option>
+          <option value="1">dispather</option>
+          @* <option value="2">Chef</option>
+          <option value="3">Cleaner</option> *@
+        </select>
+      </div>
+      <br>
+      <div class="input-box button">
+        <input type="Submit" value="Register Now">
+      </div>
+      <div class="text">
+        <h3>Already have an account? <a asp-action="Login" asp-controller="User">Login now</a></h3>
+      </div>
+    </form>
+  </div>
+</body>

@@ -1,0 +1,43 @@
+  @using RDMS.Models.Dtos
+    @using RDMS.Models.Enums
+     @model IEnumerable<FoodDto>
+
+
+@{
+    ViewData["Title"] = "Food Details";
+}
+
+    <link rel="stylesheet" href="~/css/foods.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+@if (@Model == null || @Model.Count() == 0)
+{
+    <h1>No Food yet</h1>
+}
+     <div class="images">
+        @foreach (var food in @Model)
+        {
+            <div class="post-image">
+            @if (food.OrderStatus !=   OrderStatus.NotAvailable)
+                {   
+                        <img  asp-append-version="true" src="~/Upload/Images/@food.Image"  alt="food.Data image">
+                        <h6>@food.FoodName</h6>
+                         <p>@food.Price</p>
+                        <p>@food.OrderStatus <input type="hidden" value="hidden" > </p> 
+                        <div class="btn-group">
+                        <a class="btn-danger btn" asp-action="DeleteFood" asp-route-id=@food.Id style="border-radius: 5px;">Delete</a>
+                        <a class="btn-warning btn" asp-action="EditFood" asp-route-id=@food.Id style="border-radius: 5px;">Update</a>
+                        </div>
+                }
+                else
+                {
+                        <img src="~/Upload/Images/@food.Image" alt="food.Data image">
+                        <h6>@food.Name</h6>
+                        <p>$ @food.Price</p>
+                        <div class="btn-group">
+                        <a class="btn-danger btn" asp-action="DeleteFood" asp-route-id=@food.Id style="border-radius: 5px;">Delete</a>
+                        <a class="btn-warning btn" asp-action="EditFood" asp-route-id=@food.Id style="border-radius: 5px;">Update</a>
+                        </div>
+                }
+            </div>
+        }
+</div>

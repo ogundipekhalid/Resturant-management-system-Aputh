@@ -1,0 +1,52 @@
+
+
+@model RDMS.Models.Dtos.CreateRoleRequestModel
+
+@* @{
+   Layout = null;
+} *@
+@* 
+<style>
+    .form {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.subm {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+section{
+    backdrop-filter:unset;
+    background-size: auto;
+    background-color: aliceblue;
+}
+
+.subm:hover {
+  background-color: #45a049;
+}
+
+</style> *@
+
+<section >
+  <h5 class="head-font">Categories Creation</h5>
+
+  <form  action="Create" method="post" enctype="multipart/form-data">
+    <div>
+      <input  required type="text" name="Name" placeholder="Categories Name" required>
+    </div>
+    <div>
+      <input class="subm" type="submit" value="Create">
+    </div>
+  </form>
+</section>
+

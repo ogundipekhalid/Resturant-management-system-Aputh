@@ -1,0 +1,16 @@
+
+@using  RDMS.Models.Dtos
+@model  BaseResponce<IEnumerable<CartItemDto>> 
+
+@* <form asp-action="MakePayment" asp-controller="Payment" > *@
+<form asp-action="DontMakePayMent" asp-controller="Payment" >
+    <div>
+        <input type="text" name="Amount" >
+    </div>
+    <div>
+        <input type="text" name="Email" >
+    </div>
+    <div>
+        <input type="text" name="PhoneNumber" >
+    </div>
+</form>

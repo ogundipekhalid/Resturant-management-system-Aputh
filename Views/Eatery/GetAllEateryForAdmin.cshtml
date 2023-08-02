@@ -1,0 +1,266 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<style>
+    body {
+        background-color: #f5f8fa;
+        /* Milky white color */
+        margin: 20px;
+    }
+
+    h3 {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        color: #8b5c8d;
+        /* Purple color */
+    }
+
+    table {
+        background-color: #ffffff;
+        /* White color */
+    }
+
+    th {
+        background-color: #f5f5f5;
+        /* Light gray color */
+    }
+
+    a {
+        color: #007bff;
+        /* Blue color */
+    }
+
+    a:hover {
+        color: #0056b3;
+        /* Darker blue color */
+    }
+</style>
+
+@model IEnumerable<RDMS.Models.Dtos.EateryDto>
+
+
+@{
+    ViewData["Title"] = "List of Company";
+}
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" />
+    <script src="~/scripts/w3.js"></script>
+    <div class="form-group">
+       <i class="fa fa-search-minus"></i><input type="search" id="search" class="form-control" oninput="w3.filterHTML('#list', '.staff', this.value)" placeholder="Search for Compny">
+    </div>
+@if (@Model == null || @Model.Count() == 0)
+{
+    <h1>No view  yet</h1>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table" id="list">
+            <caption>List of Company</caption>
+            <thead>
+                <tr>
+                    <th scope="col">S/N</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">CACRegistrationNum</th>
+                    <th scope="col">Certificate</th>
+                    <th scope="col">Logo</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Note</th>
+                    <th scope="col">Not Verify</th>
+                    <th scope="col">Verify</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var eatery in @Model)
+                {
+                    <tr class="staff">
+                        <th scope="row">@eatery.Id</th>
+                        <td>@eatery.Name</td>
+                        <td>@eatery.CertificationNumber</td>
+                       <td>
+                            <a target="_blank" href="~/Upload/images/@eatery.Certificate">View</a>
+                         </td>
+                       <td>
+                            <a target="_blank" href="~/Upload/images/@eatery.Logo">View</a>
+                         </td>
+                         <td>@eatery.IsVerify</td>
+                         <td>@eatery.Note</td>
+                        <td>
+                              <a asp-controller="Eatery" asp-action="Delete" asp-route-id="@eatery.Id"
+                                class="btn btn-secondary">Not Verify</a>
+                        </td>
+                            <td>
+                                    <a asp-controller="Eatery" asp-action="Verify" asp-route-id="@eatery.Id"
+                                class="btn btn-info">Verify</a>
+                         </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $(".not-verify-btn").click(function () {
+            alert("Not Verify");
+        });
+
+        $(".verify-btn").click(function () {
+            alert("Verify");
+        });
+    });
+</script>
+
+
+
+@* 
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="main-card mb-3 card">
+            <div class="card-header">Active Eatery
+                <div class="btn-actions-pane-right">
+                    <div role="group" class="btn-group-sm btn-group">
+                        <button class="active btn btn-focus">Last Week</button>
+                        <button class="btn btn-focus">All Month</button>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th>Name</th>
+                            <th class="text-center">City</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center text-muted">#345</td>
+                            <td>
+                                <div class="widget-content p-0">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left mr-3">
+                                            <div class="widget-content-left">
+                                                <img width="40" class="rounded-circle" src="assets/images/avatars/4.jpg"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="widget-content-left flex2">
+                                            <div class="widget-heading">John Doe</div>
+                                            <div class="widget-subheading opacity-7">Web Developer</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">Madrid</td>
+                            <td class="text-center">
+                                <div class="badge badge-warning">Pending</div>
+                            </td>
+                            <td class="text-center">
+                                <button type="button" id="PopoverCustomT-1"
+                                    class="btn btn-primary btn-sm">Details</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center text-muted">#347</td>
+                            <td>
+                                <div class="widget-content p-0">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left mr-3">
+                                            <div class="widget-content-left">
+                                                <img width="40" class="rounded-circle" src="assets/images/avatars/3.jpg"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="widget-content-left flex2">
+                                            <div class="widget-heading">Ruben Tillman</div>
+                                            <div class="widget-subheading opacity-7">Etiam sit amet orci eget</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">Berlin</td>
+                            <td class="text-center">
+                                <div class="badge badge-success">Completed</div>
+                            </td>
+                            <td class="text-center">
+                                <button type="button" id="PopoverCustomT-2"
+                                    class="btn btn-primary btn-sm">Details</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center text-muted">#321</td>
+                            <td>
+                                <div class="widget-content p-0">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left mr-3">
+                                            <div class="widget-content-left">
+                                                <img width="40" class="rounded-circle" src="assets/images/avatars/2.jpg"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="widget-content-left flex2">
+                                            <div class="widget-heading">Elliot Huber</div>
+                                            <div class="widget-subheading opacity-7">Lorem ipsum dolor sic</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">London</td>
+                            <td class="text-center">
+                                <div class="badge badge-danger">In Progress</div>
+                            </td>
+                            <td class="text-center">
+                                <button type="button" id="PopoverCustomT-3"
+                                    class="btn btn-primary btn-sm">Details</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center text-muted">#55</td>
+                            <td>
+                                <div class="widget-content p-0">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left mr-3">
+                                            <div class="widget-content-left">
+                                                <img width="40" class="rounded-circle" src="assets/images/avatars/1.jpg"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="widget-content-left flex2">
+                                            <div class="widget-heading">Vinnie Wagstaff</div>
+                                            <div class="widget-subheading opacity-7">UI Designer</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">Amsterdam</td>
+                            <td class="text-center">
+                                <div class="badge badge-info">On Hold</div>
+                            </td>
+                            <td class="text-center">
+                                <button type="button" id="PopoverCustomT-4"
+                                    class="btn btn-primary btn-sm">Details</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-block text-center card-footer">
+                <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i
+                        class="pe-7s-trash btn-icon-wrapper"> </i></button>
+                <button class="btn-wide btn btn-success">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 
+
+-!> *@

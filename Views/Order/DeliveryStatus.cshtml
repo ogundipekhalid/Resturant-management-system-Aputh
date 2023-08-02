@@ -1,0 +1,29 @@
+
+@using RDMS.Models.Dtos
+@model OrderDto
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+@if (ViewBag.Message != null)
+{
+    <h2>@ViewBag.Message</h2>
+}
+
+<body>
+    <div>
+        <div>
+            <div>
+                <label>
+                    DELIVERYSTATUS:@Model.OrderStatus
+                </label>
+    </div>
+    <style>
+        body {
+            background-color: rgb(50, 112, 133);
+            font-size: large;
+            font-weight: 900;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+    </style>
+    </div>
+</body>
+<a class="btn-primary btn" asp-controller="Order" text asp-action="GetAllOrder">Back</a>

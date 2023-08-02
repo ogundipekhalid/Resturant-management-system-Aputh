@@ -1,0 +1,113 @@
+
+<!-- // https://localhost:7119/food/SearchFood?addressId=4 -->
+
+
+<!-- //  <main style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+//   <div class="form_container" style="background-color: #f2f2f2; border-radius: 10px; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);">
+
+//     <form asp-action="Register" enctype="multipart/form-data">
+//       <div>
+//         <input type="text" asp-for="BranchAddress.Street" class="form-control" style="margin-bottom: 10px;" placeholder="Your street" />
+//       </div>
+//       <div> aliceblue;
+//         <input type="text" asp-for="BranchAddress.City" class="form-control" style="margin-bottom: 10px;" placeholder="Your City" />
+//       </div>
+//       <div>
+//         <input type="text" asp-for="BranchAddress.State" class="form-control" style="margin-bottom: 10px;" placeholder="Your state" />
+//       </div>
+//       <div>
+//         <input type="text" asp-for="User.FirstName" class="form-control" style="margin-bottom: 10px;" placeholder="FirstName">
+//       </div>
+//       <div>
+//         <input type="text" asp-for="User.LastName" class="form-control" style="margin-bottom: 10px;" placeholder="LastName">
+//       </div>
+//       <div>
+//         <input type="text" asp-for="User.Email" class="form-control" style="margin-bottom: 10px;" placeholder="Email">
+//       </div>
+//       <div>
+//         <input type="number" asp-for="User.PhoneNumber" class="form-control" style="margin-bottom: 10px;" placeholder="Phonenumber">
+//       </div>
+//       <div>
+//         <input type="text" asp-for="User.Password" class="form-control" style="margin-bottom: 10px;" placeholder="Password">
+//       </div>
+//       <div>
+//         <input type="text" asp-for="Manager.BranchName" class="form-control" style="margin-bottom: 10px;" placeholder="Branach Name">
+//       </div>
+//       <div class="btn_box" style="text-align: center;">
+//         <button type="submit" class="btn btn-primary">Register</button>
+//       </div>
+//     </form>
+//   </div>
+// </main> 
+
+//Order/OrderDetails?=5
+
+<div class="form-group">
+                @Html.LabelFor(x => x.PossName, new { @class = "control-label" })
+                <br />
+                <div class="dropdown">
+                    <button 
+                    name="Name" asp-items="ViewBag.Position" required multiple>
+                    <option value="Name" disabled>--select name=" Poitions"--</option>
+                    @* class="btn btn-primary dropdown-toggle" name="Name" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        --select Positions-- *@
+                    </button>
+                    <div class="dropdown" aria-labelledby="dropdownMenuButton">
+                        @foreach (var item in ViewBag.Position)
+                        {
+                            <a name="Name" href="#">@item</a>
+                        }
+                    </div> 
+                </div>
+            </div>
+            @* <div class="form-group">
+                @Html.LabelFor(x => x.PossName, new {@class = "control-label"})
+                </br>
+                <select name="Name" asp-items="ViewBag.Position" required multiple>
+                    <option value="Name" disabled>--select name=" Poitions"--</option>
+                     <option value="Name" class="form-control" >-- select name=" Poitions" -- </option> *
+                </select>
+            </div> *@
+            
+            var order = await _orderRepositry.GetAllOrdersWithCustomer(u =>  u.OrderStatus == OrderStatus.IsPaid && u == u.Branch.Id);
+
+              <ul>
+                     <form asp-action="GetAllFoodFromLocation" asp-controller="Food"  > 
+                    <li><label for=""Select Location></label></li>
+                    <option value="" selected >search</option >  
+                   <select name="locationId" asp-items="ViewBag.address" required>
+                   </select>
+                   <div>
+                </form>
+            </ul>
+                
+                    <form asp-action="Search" asp-controller="Food">
+ 
+                     <i class="fa fa-search-minus"></i><input type="search" id="search" class="form-control" oninput="w3.filterHTML('#list', '.food', this.value)" placeholder="Search for Food">
+                    <input type="submit" id="location" placeholder="Search"/>
+                    </form>
+                   </div>
+                    </form>
+                </ul>
+-->
+<!-- int [][] jac = new int [3]
+{
+    1,2,3,4;
+}
+gBD [8]  = new int []{1,2,3,4} -->
+
+<!-- 
+     UserDto = new UserDto
+                                {
+                                    Id = d.Customer.User.Id,
+                                    FirstName = d.Customer.User.FirstName,
+                                    Address = new AddressDto
+                                     { Id = d.Customer.User.Address.Id,
+                                     City = d.Customer.User.Address.City,
+                                      },
+                                },
+                                CustomerId = d.CustomerId,
+                            OrderFoods = d.OrderFoods,
+                            BranchId = d.BranchId,
+ -->

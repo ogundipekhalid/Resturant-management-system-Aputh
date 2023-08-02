@@ -1,0 +1,83 @@
+@* 
+ @model RDMS.Models.Dtos.OrderDto
+
+ <div>
+    <p>Are sure you want to delete </p>
+    <ul>
+        <li>
+            <form asp-action="Delete"   >
+        <input class="btn btn-danger" type="submit" asp-for ="Id" name="Id" value="@Model.Id" value="yes"   />
+        </form>
+        </li>
+         <li>
+            <a asp-controller="User" asp-action="Customer"> No</a>
+        </li>
+    </ul>
+</div>  *@
+
+
+@model RDMS.Models.Dtos.OrderDto
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<style>
+    body {
+        background-color: #f5f8fa; /* Milky white color */
+        margin: 20px;
+    }
+
+    .container {
+        background-color: #ffffff; /* White color */
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    h4 {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        color: #8b5c8d; /* Purple color */
+    }
+
+    .btn-danger {
+        background-color: #dc3545; /* Red color */
+        border-color: #dc3545; /* Red color */
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333; /* Darker red color */
+        border-color: #c82333; /* Darker red color */
+    }
+
+    .btn-secondary {
+        background-color: #6c757d; /* Gray color */
+        border-color: #6c757d; /* Gray color */
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268; /* Darker gray color */
+        border-color: #5a6268; /* Darker gray color */
+    }
+</style>
+
+<div class="container">
+    <h4>Are you sure you want to delete?</h4>
+    <ul class="list-inline">
+        <li class="list-inline-item">
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id" name="Id" value="@Model.Id" />
+                <button type="submit" class="btn btn-danger" onclick="return confirmDelete()">Yes</button>
+            </form>
+        </li>
+        <li class="list-inline-item">
+            <a href="/User/Customer" class="btn btn-secondary">No</a>
+        </li>
+    </ul>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function confirmDelete() {
+        return confirm("Are you sure you want to delete this?");
+    }
+</script>

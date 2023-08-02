@@ -1,0 +1,76 @@
+@using RDMS.Models.Dtos;
+@model IEnumerable<FoodDto>;
+
+@* @model IEnumerable<RDMS.Models.Dtos.FoodDto> *@
+
+
+
+<div>
+    <table class="table table-active table-bordered table-responsive table-striped">
+    <thead>
+          <tr>
+                <th>S/N</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Edith</th>
+                <th>Details</th>
+                <th>Remove</th>
+                <th>Profile</th>
+                <th>order</th>
+            </tr>
+
+        </thead>
+        <tbody >
+            @foreach (var food in Model)
+            {
+                <tr>
+                    @* <img  asp-append-version="true" src="~/Upload/Images/@food.Image"  alt="food.Data image" class="size-10"> *@
+                 <td>@food.Id</td>
+                
+                    <td>@food.Name</td>
+                  
+                    <td>@food.Image</td>
+                
+                    <td>@food.Price</td>
+                                  
+                    <td>
+                        <a asp-controller="Food" asp-action="Update" asp-route-id="@food.Id"> Edith </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Food" asp-action="Details" asp-route-id="@food.Id"> Details </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Food" asp-action="Delete" asp-route-id="@food.Id"> Remove </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Food" asp-action="Profile" asp-route-id="@food.Id"> Get </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Order" asp-action="MakeOrder" asp-route-id="@food.Id">Order </a>
+                    </td>
+                </tr>
+            }
+
+            <style>
+                tr {
+                    color: cadetblue;
+                    text-transform: uppercase;
+                }
+
+                td. {
+                    color: cornflowerblue;
+                }
+
+                table,
+                th,
+                td {
+                    border: 1px solid;
+                }
+           </style>
+        </tbody>
+    </table>
+</div>
+
+
+

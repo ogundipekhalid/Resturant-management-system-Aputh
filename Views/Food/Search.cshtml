@@ -1,0 +1,38 @@
+@using System.Collections.Generic;
+@using RDMS.Models.Entity;
+
+@model IEnumerable<Food>
+
+<h1>Search Results</h1>
+<form method="get" asp-action="Search" >
+    <input type="text" name="Search"  placeholder="Enter search term" />
+    <button type="submit">Search</button>
+</form>
+
+
+@if (Model.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var food in Model)
+            {
+                <tr>
+                    <td>@food.Id</td>
+                    <td>@food.Name</td>
+                    <td>@food.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No results found.</p>
+}

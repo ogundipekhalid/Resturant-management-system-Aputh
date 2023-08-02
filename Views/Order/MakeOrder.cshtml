@@ -1,0 +1,71 @@
+@using RDMS.Models.Dtos
+@model BaseResponce<OrderDto>;
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<style>
+    body {
+        background-color: #f5f8fa; /* Milky white color */
+        margin: 20px;
+    }
+
+    h2 {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        color: #8b5c8d; /* Purple color */
+    }
+
+    .container {
+        background-color: #ffffff; /* White color */
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .btn-primary {
+        background-color: #8b5c8d; /* Purple color */
+        border-color: #8b5c8d; /* Purple color */
+    }
+
+    .btn-primary:hover {
+        background-color: #764e7d; /* Darker purple color */
+        border-color: #764e7d; /* Darker purple color */
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Delivery Address</h2>
+            <form asp-action="MakeOrder">
+
+                @* <div class="form-group">
+                    <label for="Street">Street</label>
+                    <input for="Street" type="text" name="Street" id="Street" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="City" class="control-label">City</label>
+                    <input type="text" name="City" id="City" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="State">State</label>
+                    <input type="text" name="State" id="State" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div> *@
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Add any JavaScript code specific to this page if needed
+    });
+</script>

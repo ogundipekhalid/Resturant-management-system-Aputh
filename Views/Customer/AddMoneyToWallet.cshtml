@@ -1,0 +1,20 @@
+
+
+@* @using RDMS.Models.Dtos *@
+@* @model RDMS.Models.Dtos.UpdateWalletRequestModel *@
+@* @model RDMS.Models.Dtos.CustomerDto *@
+@* @model BaseResponce<CustomerDto> *@
+
+<div  class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form method="post" asp-action="FundWallet">
+                 <div class="form-group">
+                    <label for="Wallet">Amount</label>
+                    <input type="number" name="Wallet" id="Wallet" class="form-control"  placeholder="Amount"/>
+                </div>
+                <button type="submit">Fund</button>
+            </form>
+        </div>
+    </div>
+</div>

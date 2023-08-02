@@ -1,0 +1,41 @@
+@model IEnumerable<RDMS.Models.Dtos.RoleDto>
+
+@{
+    ViewData["Title"] = "Role List";
+}
+
+<div class="">
+    <div class="row">
+        <div class="col-md-2 border" style="min-height: 520px; padding: 0px; margin: 0px">
+        </div>
+        <div class="row col-md-10 pt-3">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <span class="text-center"><h3>@ViewData["Title"]</h3></span>
+                <table class="table table-bordered table-striped table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>RoleName</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var role in Model)
+                        {
+                            <tr>
+                                <td>@role.Id</td>
+                                <td>@role.Name</td>
+                                <td><a asp-action="Delete" asp-controller="Role" asp-route-id="@role.Id">Remove</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                    <div>
+
+                    </div>
+                </table>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,508 @@
+@using System.Security.Claims;
+
+@using System.Security.Principal;
+@{
+
+  var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+  var Role = User.FindFirst(ClaimTypes.Role)?.Value;
+  @* var branchId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value; *@
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+  @if (User.IsInRole("Customer"))
+  {
+    <div class="sidebar-links">
+      <ul>
+        <div class="active-tab"></div>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="#" class="active" data-active="0">
+            <div class="icon">
+              <i class='bx bx-tachometer'></i>
+              <i class='bx bxs-tachometer'></i>
+            </div>
+            <span class="link hide">Dashboard</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="1">
+          <a asp-action="Index" asp-controller="Customer" data-active="1">
+            <div class="icon">
+              <i class='bx bx-folder'></i>
+              <i class='bx bxs-folder'></i>
+            </div>
+            <span class="link hide">MakeOrder</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="1">
+          <a asp-action="GetOrderByUserId" asp-controller="Order" data-active="1">
+            <div class="icon">
+              <i class='bx bx-folder'></i>
+              <i class='bx bxs-folder'></i>
+            </div>
+            <span class="link hide"> Details of Order </span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="3">
+          <a asp-action="Details" asp-controller="Customer" data-active="3">
+            <div class="icon">
+              <i class='bx bx-bar-chart-square'></i>
+              <i class='bx bxs-bar-chart-square'></i>
+            </div>
+            <span class="link hide">Profile</span>
+          </a>
+        </li>
+        <div class="tooltip">
+          <span class="show">Dashboard</span>
+          <span>MakeOrder</span>
+          <span>FundWallet</span>
+          <span>Profile</span>
+        </div>
+      </ul>
+      <!-- <h4 class="hide">Shortcuts</h4> -->
+      <div class="link hide">Others</div>
+      <ul>
+        <li class="tooltip-element" data-tooltip="0">
+          <a asp-action="Update" asp-controller="Customer" asp-route-id="id" data-active="4">
+            <div class="icon">
+              <i class='bx bx-notepad'></i>
+              <i class='bx bxs-notepad'></i>
+            </div>
+            <span class="link hide">EithProfile</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="2">
+          <a asp-action="" asp-controller="">
+            <div class="icon">
+              <i class='bx bx-cog'></i>
+              <i class='bx bxs-cog'></i>
+            </div>
+            <span class="link hide"> </span>
+          </a>
+        </li>
+        <div class="tooltip">
+          <span class="show">EithProfile</span>
+          <span>Help</span>
+          <span>Settings</span>
+        </div>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="#" class="account tooltip-element" data-tooltip="0">
+        <i class='bx bx-user'></i>
+      </a>
+      <div class="admin-user tooltip-element" data-tooltip="1">
+        <div class="admin-profile hide">
+          <img src="~/def/./img/face-1.png" alt="">
+          <div class="admin-info">
+            <h3>@User.Identity?.Name!</h3>
+            <h5>@User.FindFirst(ClaimTypes.Role)?.Value</h5>
+          </div>
+        </div>
+        <a asp-action="Login" asp-controller="User" class="log-out">
+          <i class='bx bx-user'>
+            @if (User.Identity.IsAuthenticated)
+            {
+              <li class="">
+                <form class="form-inline">
+                  <button asp-controller="User" asp-action="Logout" class="nav-link btn btn-link text-dark">Logout</button>
+                </form>
+              </li>
+            }
+          </i>
+        </a>
+      </div>
+      <div class="tooltip">
+        <span class="show">LASIX</span>
+      </div>
+    </div>
+
+  }
+  else if (User.IsInRole("SuperAdmin"))
+  {
+    <div class="sidebar-links">
+      <ul>
+        <div class="active-tab"></div>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="#" class="active" data-active="0">
+            <div class="icon">
+              <i class='bx bx-tachometer'></i>
+              <i class='bx bxs-tachometer'></i>
+            </div>
+            <span class="link hide">Dashboard</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="1">
+          <a asp-action="GetAllEateryForAdmin" asp-controller="Eatery" data-active="1">
+            <div class="icon">
+              <i class='bx bx-folder'></i>
+              <i class='bx bxs-folder'></i>
+            </div>
+            <span class="link hide"> VIEW ALL COMPANY </span>
+            <!-- <a asp-controller="Customer" >MakeOrder </a> -->
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="2">
+          <a asp-controller="User" asp-action="GetAll"  data-active="2">
+            <div class="icon">
+              <i class='bx bx-message-square-detail'></i>
+              <i class='bx bxs-message-square-detail'></i>
+            </div>
+            <span class="link hide">ALL USER </span>
+          </a>
+        </li>
+        <div class="tooltip">
+          <span class="show">Dashboard</span>
+          <span> VIEW ALL COMPANY </span>
+          <span>ALL USER</span>
+        </div>
+      </ul>
+      <!-- <h4 class="hide">Shortcuts</h4> -->
+      <div class="link hide"> OTHERS </div>
+      <ul>
+        <li class="tooltip-element" data-tooltip="1">
+          <a asp-action="Create" asp-controller="Role" data-active="5">
+            <div class="icon">
+              <i class='bx bx-help-circle'></i>
+              <i class='bx bxs-help-circle'></i>
+            </div>
+            <span class="link hide"> ADD ROLE </span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="2">
+          <a asp-action="GetAll" asp-controller="Role">
+            <div class="icon">
+              <i class='bx bx-cog'></i>
+              <i class='bx bxs-cog'></i>
+            </div>
+            <span class="link hide"> HISTORY </span>
+          </a>
+        </li>
+        <div class="tooltip">
+          <span class="show">OTHERS</span>
+          <span>Add Role </span>
+          <span>Settings</span>
+        </div>
+      </ul>
+    </div>
+    <div class="sidebar-footer">
+      <a href="#" class="account tooltip-element" data-tooltip="0">
+        <i class='bx bx-user'></i>
+      </a>
+      <div class="admin-user tooltip-element" data-tooltip="1">
+        <div class="admin-profile hide">
+          <img src="~/def/./img/face-1.png" alt="">
+          <div class="admin-info">
+            <h3>@User.Identity?.Name!</h3>
+            <h5>@User.FindFirst(ClaimTypes.Role)?.Value</h5>
+          </div>
+        </div>
+        <a asp-action="Login" asp-controller="User" class="log-out">
+          <i class='bx bx-user'>
+            @if (User.Identity.IsAuthenticated)
+            {
+              <li class="">
+                <form class="form-inline">
+                  <button asp-controller="User" asp-action="Logout" class="nav-link btn btn-link text-dark">Logout</button>
+                </form>
+              </li>
+            }
+          </i>
+        </a>
+      </div>
+      <div class="tooltip">
+        <span class="show">LASIX</span>
+      </div>
+    </div>
+  }
+
+  else if (User.IsInRole("Eatery"))
+  {
+    var eatery = ViewBag.Eatery;
+    <div class="sidebar-links">
+      <ul>
+        <div class="active-tab"></div>
+
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="#" class="active" data-active="0">
+            <div class="icon">
+              <i class='bx bx-tachometer'></i>
+              <i class='bx bxs-tachometer'></i>
+            </div>
+            <span class="link hide">Dashboard</span>
+          </a>
+        </li>
+          @if (eatery.IsVerify)
+         {
+            <li class="tooltip-element" data-tooltip="1">
+                <a asp-action="Register" asp-controller="Branch" data-active="1">
+                  <div class="icon">
+                    <i class='bx bx-folder'></i>
+                    <i class='bx bxs-folder'></i>
+                  </div>
+                  <span class="link hide">AddBranch</span>
+                </a>
+            </li>
+        }
+        <li class="tooltip-element" data-tooltip="2">
+          <a asp-action="GetAllEatery" asp-controller="Eatery" data-active="2">
+            <div class="icon">
+              <i class='bx bx-message-square-detail'></i>
+              <i class='bx bxs-message-square-detail'></i>
+            </div>
+            <span class="link hide"> GetAllEatery </span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="2">
+          <a asp-action="GetAllBranch" asp-controller="Branch" data-active="2">
+            <div class="icon">
+              <i class='bx bx-message-square-detail'></i>
+              <i class='bx bxs-message-square-detail'></i>
+            </div>
+            <span class="link hide"> GetAllBranch </span>
+          </a>
+        </li>
+        @* } *@
+        <div class="tooltip">
+          <span class="show">Dashboard</span>
+          <span>AddBranch</span>
+          <span> Details </span>
+        </div>
+      </ul>
+      <!-- <h4 class="hide">Shortcuts</h4> -->
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="#" class="account tooltip-element" data-tooltip="0">
+        <i class='bx bx-user'></i>
+      </a>
+      <div class="admin-user tooltip-element" data-tooltip="1">
+        <div class="admin-profile hide">
+          <img src="~/def/./img/face-1.png" alt="">
+          <div class="admin-info">
+            <h3>@User.Identity?.Name!</h3>
+            <h5>@User.FindFirst(ClaimTypes.Role)?.Value</h5>
+          </div>
+        </div>
+        <a asp-action="Login" asp-controller="User" class="log-out">
+          <i class='bx bx-user'>
+            @if (User.Identity.IsAuthenticated)
+            {
+              <li>
+                <form class="form-inline">
+                  <button asp-controller="User" asp-action="Logout" class="nav-link btn btn-link text-dark">Logout</button>
+                </form>
+              </li>
+            }
+          </i>
+        </a>
+      </div>
+      <div class="tooltip">
+        <span class="show">LASIX</span>
+      </div>
+    </div>
+
+
+  }
+  else if (User.IsInRole("EateryManager"))
+  {
+
+  }
+  else if (User.IsInRole("Branch"))
+  {
+   @* var eatery = ViewBag.branch; *@
+
+    <div class="sidebar-links">
+      <ul>
+        <div class="active-tab"></div>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="#" class="active" data-active="0">
+            <div class="icon">
+              <i class='bx bx-tachometer'></i>
+              <i class='bx bxs-tachometer'></i>
+            </div>
+            <span class="link hide">Dashboard</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="1">
+          <a asp-action="AddFood" asp-controller="Food" data-active="1">
+            <div class="icon">
+              <i class='bx bx-folder'></i>
+              <i class='bx bxs-folder'></i>
+            </div>
+            <span class="link hide">AddFood</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="2">
+          <a asp-action="Foods" asp-controller="Food" data-active="2">
+            <div class="icon">
+              <i class='bx bx-message-square-detail'></i>
+              <i class='bx bxs-message-square-detail'></i>
+            </div>
+            <span class="link hide">ViewAllFood </span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="3">
+          <a asp-action="Add" asp-controller="Staff"  asp-route-Id="branchId"  data-active="2">
+            @* <a asp-action="Register" asp-controller="Staff"  asp-route-id="id"  data-active="2"> *@
+            <div class="icon">
+              <i class='bx bx-bar-chart-square'></i>
+              <i class='bx bxs-bar-chart-square'></i>
+            </div>
+            <span class="link hide"> AddStaff </span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="4">
+          <a asp-action="Index" asp-controller="Staff" data-active="4">
+            <div class="icon">
+              <i class='bx bx-bar-chart-square'></i>
+              <i class='bx bxs-bar-chart-square'></i>
+            </div>
+            <span class="link hide"> AllStaff </span>
+          </a>
+        </li>
+        <div class="tooltip">
+          <span class="show">Dashboard</span>
+          <span>Projects</span>
+          <span>Messages</span>
+          <span>Analytics</span>
+        </div>
+      </ul>
+      <!-- <h4 class="hide">Shortcuts</h4> -->
+      <div class="link hide">Others</div>
+      <ul>
+             @* @ViewBag.branchId;
+             asp-route-id="@ViewBag.branchId"
+              *@
+        <li class="tooltip-element" data-tooltip="0">
+          <a asp-action="Create" asp-controller="Categories"  data-active="4">
+            <div class="icon">
+              <i class='bx bx-notepad'></i>
+              <i class='bx bxs-notepad'></i>
+            </div>
+            <span class="link hide"> Catigories </span>
+          </a>
+        </li>
+         <li class="tooltip-element" data-tooltip="3">
+          <a asp-action="GetAll" asp-controller="Categories"  asp-route-id="userId"  data-active="2">
+            <div class="icon">
+              <i class='bx bx-bar-chart-square'></i>
+              <i class='bx bxs-bar-chart-square'></i>
+            </div>
+            <span class="link hide"> ALL CATEGORIES OF FOOD  </span>
+          </a>
+        </li>
+    </div>
+    <div class="sidebar-footer">
+      <a href="#" class="account tooltip-element" data-tooltip="0">
+        <i class='bx bx-user'></i>
+      </a>
+      <div class="admin-user tooltip-element" data-tooltip="1">
+        <div class="admin-profile hide">
+          <img src="~/def/./img/face-1.png" alt="">
+          <div class="admin-info">
+            <h3>@User.Identity?.Name!</h3>
+            <h5>@User.FindFirst(ClaimTypes.Role)?.Value</h5>
+          </div>
+        </div>
+        <a asp-action="Login" asp-controller="User" class="log-out">
+          <i class='bx bx-user'>
+            @if (User.Identity.IsAuthenticated)
+            {
+              <li class="">
+                <form class="form-inline">
+                  <button asp-controller="User" asp-action="Logout" class="nav-link btn btn-link text-dark">Logout</button>
+                </form>
+              </li>
+            }
+          </i>
+        </a>
+      </div>
+      <div class="tooltip">
+        <span class="show">LASIX</span>
+      </div>
+    </div>
+  }
+  else if (User.IsInRole("Staff"))
+  {
+    <div class="sidebar-links">
+      <ul>
+        <div class="active-tab"></div>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="#" class="active" data-active="0">
+            <div class="icon">
+              <i class='bx bx-tachometer'></i>
+              <i class='bx bxs-tachometer'></i>
+            </div>
+            <span class="link hide">Dashboard</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="1">
+          <a asp-action="GetOrderByUserId" asp-controller="Order" data-active="1">
+            <div class="icon">
+              <i class='bx bx-message-square-detail'></i>
+              <i class='bx bxs-message-square-detail'></i>
+            </div>
+            <span class="link hide">Delivery Food </span>
+          </a>
+        </li>
+      </ul>
+      <!-- <h4 class="hide">Shortcuts</h4> -->
+      <div class="link hide">Others</div>
+      <ul>
+        <li class="tooltip-element" data-tooltip="0">
+          <a asp-action="List" asp-controller="CartItem" data-active="4">
+            <div class="icon">
+              <i class='bx bx-notepad'></i>
+              <i class='bx bxs-notepad'></i>
+            </div>
+            <span class="link hide"> AllOrderFood </span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="0">
+          <a asp-action="model" asp-controller="CartItem" data-active="5">
+            <div class="icon">
+              <i class='bx bx-notepad'></i>
+              <i class='bx bxs-notepad'></i>
+            </div>
+            <span class="link hide"> Invoice </span>
+          </a>
+        </li>
+    </div>
+    <div class="sidebar-footer">
+      <a href="#" class="account tooltip-element" data-tooltip="0">
+        <i class='bx bx-user'></i>
+      </a>
+      <div class="admin-user tooltip-element" data-tooltip="1">
+        <div class="admin-profile hide">
+          <img src="~/def/./img/face-1.png" alt="">
+          <div class="admin-info">
+            <h3>@User.Identity?.Name!</h3>
+            <h5>@User.FindFirst(ClaimTypes.Role)?.Value</h5>
+          </div>
+        </div>
+        <a asp-action="Login" asp-controller="User" class="log-out">
+          <i class='bx bx-user'>
+            @if (User.Identity.IsAuthenticated)
+            {
+              <li class="">
+                <form class="form-inline">
+                  <button asp-controller="User" asp-action="Logout" class="nav-link btn btn-link text-dark">Logout</button>
+                </form>
+              </li>
+            }
+          </i>
+        </a>
+      </div>
+      <div class="tooltip">
+        <span class="show">LASIX</span>
+      </div>
+    </div>
+  }
+  else
+  {
+    <h3>Others</h3>
+  }
+}
+
+

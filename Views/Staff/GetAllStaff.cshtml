@@ -1,0 +1,50 @@
+
+
+    @using RDMS.Models.Dtos
+    @model IEnumerable<StaffDto>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" />
+    <script src="~/scripts/w3.js"></script>
+    <div class="form-group">
+       <i class="fa fa-search-minus"></i><input type="search" id="search" class="form-control" oninput="w3.filterHTML('#list', '.staff', this.value)" placeholder="Search for staff">
+    </div>
+@if (@Model == null || @Model.Count() == 0)
+{
+    <h1>No Staff yet</h1>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table" id="list">
+            <caption>List of Staffs</caption>
+            <thead>
+                <tr>
+                    <th scope="col">S/N</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Date Of Birth</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var staff in @Model)
+                {
+                    <tr class="staff">
+                        <th scope="row">@staff.Id</th>
+                        <td>@staff.User.FirstName</td>
+                        <td>@staff.User.LastName</td>
+                        <td>@staff.User.Email</td>
+                        <td>@staff.User.PhoneNumber</td>
+                        <td>
+                            <div class="btn-group">
+                                <a class="btn-primary btn" asp-action="StaffProfile" asp-route-id=@staff.Id>View</a>
+                                <a class="btn-warning btn" asp-action="EditStaff" asp-route-id=@staff.Id>Edit</a>
+                                <a class="btn-danger btn" asp-action="DeleteStaff" asp-route-id=@staff.Id>Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

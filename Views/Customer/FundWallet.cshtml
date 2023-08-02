@@ -1,0 +1,13 @@
+@* @model RDMS.Models.Dtos.CustomerDto
+
+<form asp-action="FundWallet" method="post" enctype="multipart/form-data">
+    <div>
+         <div class ="md -3"></div>
+             @* <label> Id</label> *@
+            @* <input asp-for ="Id" name="Id" value="@Model.Id"  hidden />
+        </div>
+        <label for="balance">Add money to your wallet:</label>
+        <input type="number" id="balance" name="balance" step="0.01" min="0" required>
+    </div>
+    <input type="submit" value="Add">
+</form> *@ 

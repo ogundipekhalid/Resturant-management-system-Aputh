@@ -1,0 +1,443 @@
+@* @model IEnumerable<RDMS.Models.Actors.BranchDto> *@
+@model RDMS.Models.Actors.EateryAdmin
+
+<link rel="stylesheet" href="~/dash/css.css">
+<link rel="stylesheet" href="~//css.css">
+<link rel="stylesheet" href="../founder/css.css">
+
+<div id="container">
+  <div id="content">
+    <div id="titleBar">
+         <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @* <title>AdminLTE 3 | Dashboard</title> *@
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    
+    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    
+    <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+    
+    <link rel="stylesheet" href="dist/css/adminlte.min.css?v=3.2.0">
+    
+    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    
+    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+    
+    <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+    <script defer referrerpolicy="origin" src="js/s.js"></script><script nonce="bc5f313f-7f93-4bbe-ab7f-e8e3630f7a67">(function(w,d){!function(f,g,h,i){f[h]=f[h]||{};f[h].executed=[];f.zaraz={deferred:[],listeners:[]};f.zaraz.q=[];f.zaraz._f=function(j){return function(){var k=Array.prototype.slice.call(arguments);f.zaraz.q.push({m:j,a:k})}};for(const l of["track","set","debug"])f.zaraz[l]=f.zaraz._f(l);f.zaraz.init=()=>{var m=g.getElementsByTagName(i)[0],n=g.createElement(i),o=g.getElementsByTagName("title")[0];o&&(f[h].t=g.getElementsByTagName("title")[0].text);f[h].x=Math.random();f[h].w=f.screen.width;f[h].h=f.screen.height;f[h].j=f.innerHeight;f[h].e=f.innerWidth;f[h].l=f.location.href;f[h].r=g.referrer;f[h].k=f.screen.colorDepth;f[h].n=g.characterSet;f[h].o=(new Date).getTimezoneOffset();if(f.dataLayer)for(const s of Object.entries(Object.entries(dataLayer).reduce(((t,u)=>({...t[1],...u[1]})),{})))zaraz.set(s[0],s[1],{scope:"page"});f[h].q=[];for(;f.zaraz.q.length;){const v=f.zaraz.q.shift();f[h].q.push(v)}n.defer=!0;for(const w of[localStorage,sessionStorage])Object.keys(w||{}).filter((y=>y.startsWith("_zaraz_"))).forEach((x=>{try{f[h]["z_"+x.slice(7)]=JSON.parse(w.getItem(x))}catch{f[h]["z_"+x.slice(7)]=w.getItem(x)}}));n.referrerPolicy="origin";n.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(f[h])));m.parentNode.insertBefore(n,m)};["complete","interactive"].includes(g.readyState)?zaraz.init():f.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document);</script>
+
+    <script nonce="b42ace99-3367-481c-a6b3-24c5502b3e9a"> </script>
+
+    <style>
+        
+html {
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+}
+body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(135deg, rgba(65,131,155,1) 0%,rgba(51,98,123,1) 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+* {
+  box-sizing: border-box;
+}
+#container {
+  display: table;
+  width: 1200px;
+  background: #4d5d68;
+  margin: 60px auto;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Side Bar */
+#sideMenu {
+  width: 240px;
+  height: 100%;
+  padding: 30px;
+  border-right: 1px solid #111;
+  display: table-cell;
+  vertical-align: top;
+  color: #fff;
+}
+.menu {
+  list-style: none;
+  margin:  24px 0;
+  padding: 0;
+}
+.menu li {
+  display: block;
+  height: 30px;
+  width: 100%;
+  line-height: 30px;
+  font-size: 14px;
+  font-weight: 200;
+  color: rgba(255, 255, 255, .6);
+  position: relative;
+}
+.menu li:hover {
+  color: #229ce76e;
+}
+.menu li:first-child {
+  height: 35px;
+  line-height: 35px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+}
+.addCategory {
+  font-size: 13px;
+  font-weight: 200;
+  color: rgba(255, 255, 255, .2);
+}
+.addCategory:hover {
+  color: #fff;
+}
+
+/* Content */
+#content {
+  width: calc(100% - 240px);
+  height: 100%;
+  padding: 25px;
+  display: table-cell;
+}
+#titleBar {
+  height: 36px;
+  margin-bottom: 30px;
+}
+#profilePic {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #999;
+  float: right;
+  margin-top: -8px;
+  margin-left: 14px;
+  overflow: hidden;
+}
+#profilePic img {
+  width: 100%;
+}
+.controls {
+  display: block;
+  width: 70px;
+  height: 20px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 10px;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  float: right;
+  border-radius: 20px;
+}
+.activeControl {
+  background: rgba(255, 255, 255, 0.9);
+  color: #84afce;
+  font-weight: 600;
+}
+#salesData {
+  margin-bottom: 60px;
+}
+#totalSales {
+  height: 120px;
+  position: relative;
+  margin-top: 24px;
+  margin-bottom: 50px;
+}
+#totalSales .col {
+  float: left;
+  width: 33.33%;
+  height: 100%;
+}
+#totalSales .col .progressTitle {
+  float: left;
+  margin-left: 20px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.4);
+}
+.progressBar {
+  float: left;
+  height: 120px;
+  width: 120px;
+  font-size: 40px;
+  text-align: center;
+  line-height: 120px;
+}
+
+/* Icons */
+.notification {
+  display: block;
+  width: 20px;
+  height: 20px;
+  color: #202b33;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .6);
+  position: absolute;
+  top: 0; bottom: 0; right: 2%;
+  margin: auto;
+}
+.colorIcon {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0; bottom: 0; right: 2%;
+  margin: auto;
+}
+.plus {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  color: #202b33;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 8px;
+  padding: 4px;
+  margin-right: 6px;
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, .2);
+}
+.red {
+  background: #ec1561;
+}
+.orange {
+  background: #ff9939;
+}
+.green {
+  background: #2bab51;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th {
+  text-align: left;
+  color: #fff;
+  font-weight: 400;
+  font-size: 13px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0 10px;
+  padding-bottom: 14px;
+}
+tr:not(:first-child):hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+td {
+  height: 40px;
+  line-height: 40px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 0 10px;
+}
+/* Headers */
+h1 {
+  font-size: 13px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0;
+}
+h2 {
+  float: left;
+  font-size: 19px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  margin: 0;
+  color: rgba(255, 255, 255, .8);
+}
+h3 {
+  float: left;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 300;
+  margin: 0;
+  margin-top: 8%;
+  margin-left: 20px;
+  margin-bottom: 6px;
+}
+
+.clearFix {
+  clear: both;
+}
+    </style>
+
+<section class="content">
+<div class="container-fluid">
+
+<div class="row">
+<div class="col-lg-3 col-6">
+
+        <div class="small-box bg-info">
+        <div class="inner">
+        <h3>list of  branches</h3>
+        <p> branches</p>
+        </div>
+        <div class="icon">
+        <i class="ion ion-bag"></i>
+        </div>
+        <a asp-action="GetAllBranch" asp-controller="Branch"  class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+        </div>
+
+        <div class="col-lg-3 col-6">
+
+        <div class="small-box bg-success">
+        <div class="inner">
+        <h3> Company  details <sup style="font-size: 20px">%</sup></h3>
+        <p> Company details</p>
+        </div>
+        <div class="icon">
+        <i class="ion ion-stats-bars"></i>
+        </div>
+        <a asp-action="Details" asp-controller="Eatery" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+        </div>
+
+
+        <div class="col-lg-3 col-6">
+
+        <div class="small-box bg-danger">
+        <div class="inner">
+        <h3>65</h3>
+        <p>  Users</p>
+        </div>
+        <div class="icon">
+        <i class="ion ion-pie-graph"></i>
+        </div>
+        <a  asp-action="" asp-controller="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+        </div>
+
+</div>
+
+
+</section>
+      <!-- <div id="profilePic">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/153917/profile/profile-512_1.jpg" />
+      </div> -->
+
+      <!-- <span class="controls activeControl">Weekly</span>
+      <span class="controls">Monthly</span> -->
+
+    </div>
+
+    @* <div class="mainChart">
+      <canvas id="salesData"></canvas>
+      <h2>Total Sales</h2>
+
+      <div class="clearFix"></div> *@
+
+      <!-- <div id="totalSales">
+        <div class="col">
+          <div id="creditSales" class="progressBar"></div>
+          <h3>$36,059</h3>
+          <span class="progressTitle">Credit Sales</span>
+        </div>
+        <div class="col">
+          <div id="channelSales" class="progressBar"></div>
+          <h3>$24,834</h3>
+          <span class="progressTitle">Channel Sales</span>
+        </div>
+        <div class="col">
+          <div id="directSales" class="progressBar"></div>
+          <h3>$15,650</h3>
+          <span class="progressTitle">Direct Sales</span>
+        </div>
+      </div> -->
+
+      @* <table>
+        <tr>
+          <th> Months </th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+
+        <tr>
+          <td>Dallas Oak Dining Chair</td>
+          <td>20</td>
+          <td>$1,342</td>
+        </tr>
+
+        <tr>
+          <td>Benmore Glass Coffee Table</td>
+          <td>18</td>
+          <td>$1,550</td>
+        </tr>
+
+        <tr>
+          <td>Aoraki Leather Sofa</td>
+          <td>15</td>
+          <td>$4,170</td>
+        </tr>
+
+        <tr>
+          <td>Bali Outdoor Wicker Chair</td>
+          <td>25</td>
+          <td>$2,974</td>
+        </tr>
+      </table>
+    </div> *@
+@* 
+  </div>
+</div> *@
+
+
+  
+<script src="js/jquery.min.js"></script>
+
+<script src="js/jquery-ui.min.js"></script>
+
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+
+<script src="js/Chart.min.js"></script>
+
+<script src="js/sparkline.js"></script>
+
+<script src="js/jquery.vmap.min.js"></script>
+<script src="js/jquery.vmap.usa.js"></script>
+
+<script src="js/jquery.knob.min.js"></script>
+
+<script src="js/moment.min.js"></script>
+<script src="js/daterangepicker.js"></script>
+
+<script src="js/tempusdominus-bootstrap-4.min.js"></script>
+
+<script src="js/summernote-bs4.min.js"></script>
+
+<script src="js/jquery.overlayScrollbars.min.js"></script>
+
+<script src="js/adminlte.js"></script>
+
+<script src="js/demo.js"></script>
+
+<script src="js/dashboard.js"></script>
+
+
+<script src="~/branchdash.js"></script>
+<script src="js/branchdash.js"></script>
+<script src="founder/index.js"></script>
+<script src="../js/index.js"></script>

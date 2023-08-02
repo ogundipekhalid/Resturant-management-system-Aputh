@@ -1,0 +1,41 @@
+
+ @model RDMS.Models.Dtos.EateryDto; 
+
+ @{
+    ViewData["Title"] = "Update Eatery";
+}
+
+<div class="border p-3 mt-4">
+    <div><h1>@ViewData["Title"]</h1></div>
+    <div>
+        <form asp-action="Update" asp-controller="Eatery" enctype="multipart/form-data" >
+            <div>
+                <input asp-for="Id" class="form-control" type="hidden" value="@Model.Id" hidden />
+            </div> 
+            <div>
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" type="text" value="@Model.Name" required/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="CertificationNumber"></label>
+                <input asp-for="CertificationNumber" class="form-control" type="text" value="@Model.CertificationNumber"required />
+                <span asp-validation-for="CertificationNumber" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Certificate"></label>
+                <input asp-for="Certificate" class="form-control" type="file" value="@Model.Certificate"required />
+                <span asp-validation-for="Certificate" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Logo"></label>
+                <input asp-for="Logo" class="form-control" type="file" value="@Model.Logo" required />
+                <span asp-validation-for="Logo" class="text-danger"></span>
+            </div>
+           
+            <div class="mt-2 text-end">
+                <button type="submit" class="btn btn-primary" style="width: 30%">Update Eatery</button>
+            </div>
+        </form>
+    </div>
+</div> 

@@ -1,0 +1,254 @@
+@model RDMS.Models.Dtos.CreateStaffRequestModel
+@using System.Security.Claims;
+
+@{
+  Layout = null;
+    ViewData["Title"] = "Add Staff";
+    @* var user = ViewBag.loginUser; *@
+}
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1044d3;
+    }
+
+    .wrapper {
+      position: relative;
+      max-width: 430px;
+      width: 100%;
+      background: #fff;
+      padding: 34px;
+      border-radius: 6px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .wrapper h2 {
+      position: relative;
+      font-size: 22px;
+      font-weight: 600;
+      color: #3333339f;
+    }
+
+    .wrapper h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 28px;
+      border-radius: 12px;
+      background: #4070f4;
+    }
+
+    .wrapper form {
+      margin-top: 30px;
+    }
+
+    .wrapper form .input-box {
+      height: 52px;
+      margin: 18px 0;
+    }
+
+    form .input-box input {
+      height: 100%;
+      width: 100%;
+      outline: none;
+      padding: 0 15px;
+      font-size: 17px;
+      font-weight: 400;
+      color: #333;
+      border: 1.5px solid #C7BEBE;
+      border-bottom-width: 2.5px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .input-box input:focus,
+    .input-box input:valid {
+      border-color: #4070f4;
+    }
+
+    form .policy {
+      display: flex;
+      align-items: center;
+    }
+
+    form h3 {
+      color: #707070;
+      font-size: 14px;
+      font-weight: 500;
+      margin-left: 10px;
+    }
+
+    .input-box.button input {
+      color: #fff;
+      letter-spacing: 1px;
+      border: none;
+      background: #4070f4;
+      cursor: pointer;
+    }
+
+    .input-box.button input:hover {
+      background: #0e4bf1;
+    }
+
+    form .text h3 {
+      color: #333;
+      width: 100%;
+      text-align: center;
+    }
+
+    form .text h3 a {
+      color: #4070f4;
+      text-decoration: none;
+    }
+
+    form .text h3 a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body style="background-color: #4070f4;" >
+  <div class="wrapper">
+      @User.FindFirst(ClaimTypes.Role)?.Value
+
+    <h2>Registration</h2>
+   <form id="registrationForm" asp-action="Register" asp-controller="Staff" onsubmit="return validateForm()">
+      @* <div class="input-box">
+      <input name="branchId" value="Model.branchId" hidden>
+      </div> *@
+      <div class="input-box">
+        <input type="text" name="FirstName" asp-for="FirstName" placeholder="Enter your name"  required>
+        <span asp-validation-for="FirstName"></span>
+      </div>
+      <div class="input-box">
+        <input type="text" name="LastName" asp-for="LastName" placeholder="Enter your LastName" required>
+        <span asp-validation-for="LastName"></span>
+      </div>
+      <div class="input-box">
+        <input type="email" class="form-control" name="Email" asp-for="Email" placeholder="Enter your email" required>
+        <span asp-validation-for="Email"></span>
+         @if (TempData["ErrorMessage"] != null)
+        {
+            <h1>@TempData["ErrorMessage"]</h1>
+        }
+      </div>
+      <div class="input-box">
+        <input type="number" class="form-control" name="PhoneNumber" asp-for="PhoneNumber" placeholder="PhoneNumber"
+          required>
+        <span asp-validation-for="PhoneNumber"></span>
+      </div>
+      <div class="input-box">
+        <input type="password" class="form-control" name="Password" asp-for="Password" placeholder="PassWord" required>
+        <span asp-validation-for="Password"></span>
+      </div>
+      <div class="input-box">
+        <input type="Street" class="form-control" name="Street" asp-for="Street" placeholder="Your street" required>
+        <span asp-validation-for="Street"></span>
+      </div>
+     <div class="input-group mb-3">
+                        <label class="input-group-text" for="BranchId">Options</label>
+                        <select class="form-select" id="BranchId" asp-items="@Model.BranchList" name="BranchId">
+                            <option selected>Choose...</option>
+                        </select>
+                        <span asp-validation-for="BranchId" class="text-danger"></span>
+                    </div>
+      <div class="input-box">
+        <input type="City" class="form-control" name="City" asp-for="City" placeholder=" Your city" required>
+        <span asp-validation-for="City"></span>
+      </div>
+      <div class="input-box">
+        <input type="State" class="form-control" name="State" asp-for="State" placeholder=" Your state" required>
+        <span asp-validation-for="State"></span>
+      </div>
+      <div class="input-box">
+        <input type="number" class="form-control" name="ZipCode" asp-for="ZipCode" placeholder=" Your city ZipCode"
+          required>
+        <span asp-validation-for="ZipCode"></span>
+      </div>
+      <div class="form-group">
+        <label for="Roles">Role</label>
+        <select name="Roles" class="form-control">
+          <option value="Roles" disabled>--select role--</option>
+          <option value="1">dispather</option>
+          <option value="2">Chef</option>
+          <option value="3">Cleaner</option>
+        </select>
+      </div>
+      <div class="input-box">
+        <input type="hidden" asp-for="EateryId" value="@Model.EateryId" />
+        <input type="hidden" id="messageInput" value='@TempData["message"]' />
+      </div>
+      <div class="input-box button">
+        <input type="Submit" value="Register Now">
+      </div>
+      <div class="text">
+        <h3>Already have an account? <a asp-action="Login" asp-controller="User">Login now</a></h3>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
+
+ <script>
+    function validateForm() {
+      var phoneNumberField = document.getElementsByName("PhoneNumber")[0];
+      var phoneNumber = phoneNumberField.value;
+
+      // Check if PhoneNumber has 10 digits
+      if (phoneNumber.length !== 10 || isNaN(phoneNumber)) {
+        alert("Please enter a valid 10-digit phone number.");
+        phoneNumberField.focus();
+        return false; // Prevent form submission
+      }
+
+      var emailField = document.getElementsByName("Email")[0];
+      var email = emailField.value;
+
+      // Check if the email format is valid
+      var emailPattern = /[a-zA-Z]{2,}/;
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        emailField.focus();
+        return false; // Prevent form submission
+      }
+
+      // Additional validation logic can be added here if needed.
+
+      // Registration successful, you can redirect or perform other actions here
+      alert("Registration successful!");
+      return true; // Allow form submission
+    }
+  </script>
+   <script src="vendor/jquery/jquery.min.js"></script>
+  <!-- Vendor JS-->
+  <script src="vendor/select2/select2.min.js"></script>
+  <script src="vendor/datepicker/moment.min.js"></script>
+  <script src="vendor/datepicker/daterangepicker.js"></script>
+
+  <!-- Main JS-->
+  <script src="~/js/global.js"></script>
+
+
+
